@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import MyProfile from './Components/Friends/myProfile.jsx';
+import Messages from './Components/MyChat/messages.jsx';
+import AllChats from './Components/Friends/allChats.jsx';
+import ChatNav from './Components/MyChat/chatNav.jsx';
+// import TypingDiv from './Components/MyChat/typingDiv.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='container'>
+        <div className='friends'>
+          <MyProfile/>
+          <AllChats/>
+        </div>
+
+        <div className='myChat'>
+          <ChatNav/>
+          <Messages/>
+        </div>
+      </div>
+    </>
   );
 }
 

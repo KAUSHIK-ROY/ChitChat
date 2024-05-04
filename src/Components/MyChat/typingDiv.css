@@ -1,0 +1,7 @@
+.tdetails{
+    border: 1px solid black;
+    width:80%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
