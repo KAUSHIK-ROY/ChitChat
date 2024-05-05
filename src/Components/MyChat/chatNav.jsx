@@ -1,7 +1,7 @@
 import React from 'react';
 import './chatNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera, faEllipsisVertical, faPaperPlane, faPaperclip, faPhone, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faPhone, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 export default function chatNav() {
   return (
