@@ -3,13 +3,13 @@
     margin: 0;
 }
 .tdetails{
-    border: 1px solid black;
     width:70%;
-    height: 150px;
+    /* height: 150px; */
     display: flex;
     align-items: end;
     justify-content: space-between;
     margin-bottom: 30px;
+    z-index: 100;
 }
 
 .send button{
@@ -29,17 +29,23 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:center;
+    /* justify-content:center; */
     background-color: rgb(18, 18, 18);
     margin-right: 10px;
     border-radius: 15px 15px 0 15px;
     padding-right:15px ;
+    position: relative;
+
+    .picker{
+        position: absolute;
+        bottom: 50px;
+    }
 }
 
 .inpMsg{
     flex: 1;
     border: none;
-    /* height: 50px; */
+    /* min-height: 50px; */
     max-height: 150px;
     width:80%;
     background-color: transparent;
@@ -52,10 +58,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 150px;
     font-size: 16px;
-    white-space: pre-wrap; /* Wrap text at word breaks */
-  overflow-wrap: break-word;
+   
 }
 
 .inpMsg::placeholder{

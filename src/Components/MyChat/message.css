@@ -67,3 +67,64 @@
       transform: scaleY(-1) rotate(-135deg);
    }
 }
+
+
+
+::-webkit-scrollbar{
+   scrollbar-width: none;
+}
+
+.personalchat{
+   height: 81vh;
+   /* border: 1px solid rgb(255, 255, 255); */
+
+
+   padding: 20px 50px;
+   flex: 1;
+   overflow: scroll;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+
+   .message{
+      max-width: 70%;
+      display: flex;
+      gap: 20px;
+
+      &.own{
+         align-self: flex-end;
+         
+         .text{
+            p{
+               background-color: #5183fe;
+               border-radius: 20px 0 20px 20px;
+               align-self: flex-end;
+            }
+
+            span{
+               font-size: 13px;
+               align-self: flex-end
+            };
+         }
+      }
+      .text{
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+         
+         p{
+            padding: 20px;
+            border-radius: 0 20px 20px 20px;
+            background-color: #33487d70;
+            align-self: flex-start;
+            
+         }
+
+         span{
+            font-size: 13px;
+         };
+      }
+   }
+}
+

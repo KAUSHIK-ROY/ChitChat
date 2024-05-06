@@ -11,13 +11,15 @@ export default function TypingDiv() {
 
   return (
     <>
-    <EmojiPicker open={open}/>
     <div className='tdetails'>
       <div className="tinp">
         <FontAwesomeIcon icon={faFaceSmile} className='ticon' onClick={() => setOpen((prev) => !prev)}/>
-        <textarea placeholder='Type a message...' className='inpMsg' rows="4"></textarea>
-        {/* <FontAwesomeIcon icon={faCamera}/> */}
+        <div className="picker">
+          <EmojiPicker open={open}/>
+        </div>
+        <textarea placeholder='Type a message...' className='inpMsg' rows="1"></textarea>
         <FontAwesomeIcon icon={faPaperclip} />
+        {/* <FontAwesomeIcon icon={faCamera}/> */}
         {/* <FontAwesomeIcon icon={faMicrophone}/> */}
       </div>  
 
