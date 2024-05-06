@@ -1,0 +1,30 @@
+.users{
+    height: 80px;
+    width: 19.7vw;
+    display: flex;
+    justify-content: start;
+    padding-left: 2vw;
+    align-items: center;
+    /* border: 1px solid white; */
+    border-radius: 0.7rem;
+    border: none;
+
+
+    
+}
+.udp{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid rgb(26, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.users:hover{
+    background-color: rgb(39, 39, 39);
+}
+.shortdetail{
+    padding-left:10px;
+}

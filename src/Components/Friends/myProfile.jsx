@@ -1,11 +1,11 @@
 import React from 'react';
 import './myProfile.css';
-import AllChats from './allChats.jsx';
+import AllChats from './AllChats.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChevronDown, faPenToSquare, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faChevronDown, faPenToSquare, faSearch} from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
-export default function myProfile() {
+export default function MyProfile() {
   return (
     <div className="friends">
       {/* <div className='profile'>
@@ -35,8 +35,17 @@ export default function myProfile() {
           <button className='sbtn'><FontAwesomeIcon icon={faSearch} /></button>
           <input type="text" placeholder='Search'/>
         </div>
-
-        <AllChats/>
+        <div className="allchats">
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+          <AllChats/>
+        </div>
       </div>
     </div>
   )

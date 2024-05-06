@@ -3,7 +3,7 @@ import './chatNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical, faPhone, faUser, faVideo } from '@fortawesome/free-solid-svg-icons';
 
-export default function chatNav() {
+export default function ChatNav() {
   return (
     <>
       <div className='user'>

@@ -1,7 +1,7 @@
 import './App.css';
-import MyProfile from './Components/Friends/myProfile.jsx';
-import Messages from './Components/MyChat/messages.jsx';
-// import AllChats from './Components/Friends/allChats.jsx';
+import MyProfile from './Components/Friends/MyProfile.jsx';
+import Messages from './Components/MyChat/Messages.jsx';
+
 
 function App() {
   return (

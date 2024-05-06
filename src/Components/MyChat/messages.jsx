@@ -1,9 +1,9 @@
 import React from 'react'
 import './message.css'
-import TypingDiv from './typingDiv.jsx'
-import ChatNav from './chatNav.jsx'
+import TypingDiv from './TypingDiv.jsx'
+import ChatNav from './ChatNav.jsx'
 
-export default function messages() {
+export default function Messages() {
   return (
     <div>
       <div className="msg">
