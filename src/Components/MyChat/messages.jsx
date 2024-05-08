@@ -103,7 +103,7 @@ export default function Messages(props) {
 
           
 {/* demo end */}
-          <div ref={endRef}>4585</div>
+          <div ref={endRef}></div>
         </div>
         
         <TypingDiv/>

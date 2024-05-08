@@ -9,6 +9,7 @@ import {
   // faBomb,
   faChevronDown,
   faCircleInfo,
+  faComments,
   faGear,
   faPenToSquare,
   faPhotoVideo,
@@ -87,7 +88,7 @@ export default function MyProfile() {
         <button className="bar-btn" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </button>
-        
+        <h1>ChitChat</h1> <span className="isp"><FontAwesomeIcon icon={faComments}/></span>
       </div>
 
       <div className="mychats">
