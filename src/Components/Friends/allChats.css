@@ -16,7 +16,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid rgb(26, 255, 0);
+    border: 1px solid rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,6 +24,7 @@
 }
 .users:hover{
     background-color: rgb(39, 39, 39);
+    
 }
 .shortdetail{
     padding-left:10px;

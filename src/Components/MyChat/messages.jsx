@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './message.css';
 import TypingDiv from './TypingDiv.jsx';
 import ChatNav from './ChatNav.jsx';
 
-export default function Messages() {
+export default function Messages(props) {
+
+  const endRef = useRef(null)
+
+  useEffect(()=>{
+    endRef.current?.scrollIntoView({behavior : "smooth"})
+  } , [])
+
   return (
     <div>
       <div className="msg">
@@ -88,7 +95,7 @@ export default function Messages() {
             <div className="text">
               <p>Hello.</p>
               <p>Nice to meet you.</p>
-              <p>457895656589569659585956956565655k4557</p>
+              <p>{props.data}</p>
               <span>1 min ago</span>
             </div>
           </div>
@@ -96,7 +103,7 @@ export default function Messages() {
 
           
 {/* demo end */}
-
+          <div ref={endRef}>4585</div>
         </div>
         
         <TypingDiv/>

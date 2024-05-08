@@ -18,7 +18,7 @@
     border-radius: 50%;
     border: none;
     font-size: 30px;
-    color: green;
+    color: #5183fe;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,12 +42,15 @@
     }
 }
 
+.micclip{
+    display: flex;
+    gap:30px ;
+    padding-right: 10px;
+}
 .inpMsg{
     flex: 1;
     border: none;
-    /* min-height: 50px; */
     max-height: 150px;
-    width:80%;
     background-color: transparent;
     color:white;
     outline: none;
