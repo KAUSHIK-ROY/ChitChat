@@ -1,8 +1,9 @@
 import "./login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-
+import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../Firebase";
 
 export default function Login() {
   const [form, setForm] = useState(true);
@@ -10,6 +11,22 @@ export default function Login() {
   let toggleForm = () => {
     setForm(!form);
   };
+
+  const googleLogin = ()=>{
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then(async(result) =>{
+        console.log(result);
+
+    });
+  }
+
+  const handleLogin = (e)=>{
+    e.preventDefault()
+  }
+
+  const handleRegister = (e)=>{
+
+  }
 
   return (
     <div className="lcontainer">
@@ -20,14 +37,14 @@ export default function Login() {
 
             <div className="form-box login">
               <h2>Login</h2>
-              <form action="">
+              <form onSubmit={handleLogin}>
                 <div className="input-box">
                   <input type="text" required />
                   <label htmlFor="">Username</label>
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="text" required />
+                  <input type="password" required />
                   <label htmlFor="">Password</label>
                   <FontAwesomeIcon icon={faLock} className="icn" />
                 </div>
@@ -36,6 +53,9 @@ export default function Login() {
                     Login
                   </button>
                 </div>
+                <p className="or">or</p>
+
+                <button className="btn1" onClick={googleLogin} ><img src={require("../../../src/google-logo-9824.png")} alt="G" />Sign in with Google</button>
                 <div className="regi-link">
                   <p>
                     Dont't have an account?{" "}
@@ -59,16 +79,16 @@ export default function Login() {
             <div className="curved-shape2"></div>
             <div className="form-box register">
               <h2>Register</h2>
-              <form action="">
+              <form onSubmit={handleLogin} >
                 <div className="input-box">
                   <input type="text" required />
                   <label htmlFor="">Username</label>
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="text" required />
+                  <input type="mail" required />
                   <label htmlFor="">Email</label>
-                  <FontAwesomeIcon icon={faUser} className="icn" />
+                  <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>
                 <div className="input-box">
                   <input type="password" required />
@@ -80,6 +100,8 @@ export default function Login() {
                     Register
                   </button>
                 </div>
+                <p className="or">or</p>
+                <button className="btn1" onClick={googleLogin} onSubmit={handleRegister}><img src={require("../../../src/google-logo-9824.png")} alt="G" />Sign up with Google</button>
                 <div className="regi-link">
                   <p>
                     Already have an account?{" "}

@@ -7,7 +7,7 @@ import Messages from './Components/MyChat/Messages.jsx';
 
 function App() {
 
-  const user =false;
+  const user =true;
   return (
 
       <div className='container'>
