@@ -17,6 +17,7 @@
     position: relative;
     border: 2px solid #ff2770;
     box-shadow: 0 0 25px #ff2770;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -33,11 +34,21 @@
 .form-box.login{
     left: 0;
     padding: 0 40px;
+    transform: translateX(0%);
+    transition: 0.7s;
 }
 
+
+
 .form-box.register{
-    display: none;
+    right: 0;
+    padding: 0 50px;
+    transform: translateX(0%);
+    /* 120 */
+    transition: 0.7s ease;
 }
+
+
 .form-box h2{
     font-size: 32px;
     text-align: center;
@@ -62,7 +73,7 @@
     font-weight: 600;
     border-bottom: 2px solid white;
     padding-right: 23px;
-    transition: 0.5s;
+    transition: 0.5s ;
 }
 .input-box input:focus,
 .input-box input:valid{
@@ -81,7 +92,7 @@
 
 .input-box input:focus ~ label,
 .input-box input:valid ~ label{
-    top: -5px;
+    top: -5px; 
     color: #ff2770;
 }
 
@@ -101,7 +112,7 @@
 }
 
 .btn1{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 45px;
     background-color: transparent;
@@ -114,12 +125,6 @@
     
 }
 
-/* .btn1::before{
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-} */
 
 .btn1:hover{
     background-color: #ff2770;
@@ -130,7 +135,7 @@
 .regi-link{
     font-size: 14px;
     text-align: center;
-    margin: 20px 0 10px;
+    margin: 0px 0 10px;
 }
 
 .regi-link span{
@@ -157,14 +162,22 @@
     right: 0;
     text-align: right;
     padding: 0 40px 60px 150px;
+    transform: translateX(0);
+    transition: 0.7s ease;
+}
 
-}
+
 .info-content.register{
-    right: 0;
-    text-align: right;
-    padding: 0 40px 60px 150px;
-    display: none;
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+    transform: translateX(0%);
+    /* -120 */
+    transition: 0.7s ease;
 }
+
+
 
 .logo{
     margin-top: -120px;
@@ -191,4 +204,23 @@
     background: linear-gradient(45deg, #25252b, #ff2770);
     transform: rotate(10deg) skewY(40deg);
     transform-origin: bottom right ;
+    transition: 1.5s ease;
 }
+
+.logContainer .curved-shape2{
+    position: absolute;
+    left: 0;
+    top: -5px;
+    height: 600px;
+    width: 850px;
+    background: #ff2770;
+    border-top: 3px solid #ff2770;
+    background: linear-gradient(157.5deg, #ff2770, #25252b);
+
+    transform: rotate(-10deg) skewY(-40deg);
+    transform: translateY();
+    transform-origin: bottom left ;
+    transition: 1.5s ease;
+}
+
+
