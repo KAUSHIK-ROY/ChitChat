@@ -6,6 +6,9 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+// import Loading from "../../Items/Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const [form, setForm] = useState(true);
@@ -15,6 +18,8 @@ export default function Login() {
   let toggleForm = () => {
     setForm(!form);
   };
+
+  const [loading,setLoading] = useState(false)
 
   // firebase google login
 
@@ -31,6 +36,7 @@ export default function Login() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const formData = new FormData(e.target);
     const { userName, email, password } = Object.fromEntries(formData);
 
@@ -47,16 +53,18 @@ export default function Login() {
       await setDoc(doc(db, "userChats", res.user.uid), {
         chats: []
       });
-      alert("done")
+      toast.success("Successfully create an account!")
     } catch (err) {
-      // console.log(err);
-      alert(err);
+      toast.error("Error")
+    } finally {
+      setLoading(false);
     }
   };
 
 
   return (
     <div className="lcontainer">
+      <ToastContainer theme="dark"/>
       <div className="logContainer">
         {form ? (
           <>
@@ -76,13 +84,18 @@ export default function Login() {
                   <FontAwesomeIcon icon={faLock} className="icn" />
                 </div>
                 <div className="input-box">
-                  <button className="btn1" type="submit">
-                    Login
+                  <button className="btn1" type="submit" disabled={loading}>
+                  {loading ?
+                    "Loading..."
+                    
+                    :
+                    'Login'
+                    }
                   </button>
                 </div>
                 <p className="or">or</p>
 
-                <button className="btn1" onClick={googleLogin}>
+                <button className="btn1" onClick={googleLogin} disabled={loading}>
                   <img
                     src={require("../../../src/google-logo-9824.png")}
                     alt="G"
@@ -129,12 +142,17 @@ export default function Login() {
                   <FontAwesomeIcon icon={faLock} className="icn" />
                 </div>
                 <div className="input-box">
-                  <button className="btn1" type="submit">
-                    Register
+                  <button className="btn1" type="submit" disabled={loading}>
+                    {loading ?
+                    "Loading..."
+                    
+                    :
+                    'Register'
+                    }
                   </button>
                 </div>
                 <p className="or">or</p>
-                <button className="btn1" onClick={googleLogin}>
+                <button className="btn1" onClick={googleLogin} disabled={loading}>
                   <img
                     src={require("../../../src/google-logo-9824.png")}
                     alt="G"

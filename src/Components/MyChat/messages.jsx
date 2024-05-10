@@ -14,7 +14,6 @@ export default function Messages(props) {
     <div>
       <div className="msg">
         <ChatNav />
-        {/* <div class="spinner"></div> */}
         <div className="personalchat">
 {/* demo */}
           <div className="message">

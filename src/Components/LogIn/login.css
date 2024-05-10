@@ -127,6 +127,10 @@
     gap: 10px;
 }
 
+.btn1:disabled{
+    cursor: not-allowed;
+    background-color: #ff276f63;
+}
 
 .btn1:hover{
     background-color: #ff2770;
