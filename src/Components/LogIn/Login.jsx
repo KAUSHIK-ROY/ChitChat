@@ -4,7 +4,7 @@ import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../Firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 // import Loading from "../../Items/Loading";
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,11 +12,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const [form, setForm] = useState(true);
-
+  
 
 
   let toggleForm = () => {
     setForm(!form);
+    
   };
 
   const [loading,setLoading] = useState(false)
@@ -30,8 +31,20 @@ export default function Login() {
     });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true)
+    const formData = new FormData(e.target);
+    const { email, password } = Object.fromEntries(formData);
+
+    try{
+      await signInWithEmailAndPassword(auth,email,password)
+      toast.success("Successfully Login")
+    } catch(err){
+      toast.error(err.message)
+    } finally{
+      setLoading(false)
+    }
   };
 
   const handleRegister = async (e) => {
@@ -55,7 +68,7 @@ export default function Login() {
       });
       toast.success("Successfully create an account!")
     } catch (err) {
-      toast.error("Error")
+      toast.error(err.message)
     } finally {
       setLoading(false);
     }
@@ -72,11 +85,12 @@ export default function Login() {
 
             <div className="form-box login">
               <h2>Login</h2>
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleLogin} >
+              <div className="input-box" style={{display:"none"}}></div>
                 <div className="input-box">
-                  <input type="text" required name="userName" />
-                  <label htmlFor="">Username</label>
-                  <FontAwesomeIcon icon={faUser} className="icn" />
+                  <input type="mail" required name="email" />
+                  <label htmlFor="">Email Id</label>
+                  <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>
                 <div className="input-box">
                   <input type="password" required name="password" />
@@ -128,7 +142,7 @@ export default function Login() {
               <form onSubmit={handleRegister}>
                 <div className="input-box">
                   <input type="text" required name="userName" />
-                  <label htmlFor="">Username</label>
+                  <label >Username</label>
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">

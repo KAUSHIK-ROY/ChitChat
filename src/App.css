@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: black;
+    background-color: #1e1e1e;
     color: white;
 }
 .container{
@@ -28,4 +28,13 @@ body{
     height: 100vh;
     width: 75vw;
 
+}
+
+.Reload{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
