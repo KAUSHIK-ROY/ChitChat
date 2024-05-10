@@ -3,30 +3,57 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Login() {
   const [form, setForm] = useState(true);
+
+
 
   let toggleForm = () => {
     setForm(!form);
   };
 
-  const googleLogin = ()=>{
+  // firebase google login
+
+  const googleLogin = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then(async(result) =>{
-        console.log(result);
-
+    signInWithPopup(auth, provider).then(async (result) => {
+      console.log(result);
     });
-  }
+  };
 
-  const handleLogin = (e)=>{
-    e.preventDefault()
-  }
+  const handleLogin = (e) => {
+    e.preventDefault();
+  };
 
-  const handleRegister = (e)=>{
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const { userName, email, password } = Object.fromEntries(formData);
 
-  }
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password)
+      await setDoc(doc(db, "users", res.user.uid), {
+        userName,
+        email,
+        password,
+        id : res.user.uid,
+        blocked: []
+      });
+
+      await setDoc(doc(db, "userChats", res.user.uid), {
+        chats: []
+      });
+      alert("done")
+    } catch (err) {
+      // console.log(err);
+      alert(err);
+    }
+  };
+
 
   return (
     <div className="lcontainer">
@@ -39,12 +66,12 @@ export default function Login() {
               <h2>Login</h2>
               <form onSubmit={handleLogin}>
                 <div className="input-box">
-                  <input type="text" required />
+                  <input type="text" required name="userName" />
                   <label htmlFor="">Username</label>
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="password" required />
+                  <input type="password" required name="password" />
                   <label htmlFor="">Password</label>
                   <FontAwesomeIcon icon={faLock} className="icn" />
                 </div>
@@ -55,7 +82,13 @@ export default function Login() {
                 </div>
                 <p className="or">or</p>
 
-                <button className="btn1" onClick={googleLogin} ><img src={require("../../../src/google-logo-9824.png")} alt="G" />Sign in with Google</button>
+                <button className="btn1" onClick={googleLogin}>
+                  <img
+                    src={require("../../../src/google-logo-9824.png")}
+                    alt="G"
+                  />
+                  Sign in with Google
+                </button>
                 <div className="regi-link">
                   <p>
                     Dont't have an account?{" "}
@@ -79,19 +112,19 @@ export default function Login() {
             <div className="curved-shape2"></div>
             <div className="form-box register">
               <h2>Register</h2>
-              <form onSubmit={handleLogin} >
+              <form onSubmit={handleRegister}>
                 <div className="input-box">
-                  <input type="text" required />
+                  <input type="text" required name="userName" />
                   <label htmlFor="">Username</label>
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="mail" required />
+                  <input type="mail" required name="email" />
                   <label htmlFor="">Email</label>
                   <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="password" required />
+                  <input type="password" required name="password" />
                   <label htmlFor="">Set Password</label>
                   <FontAwesomeIcon icon={faLock} className="icn" />
                 </div>
@@ -101,7 +134,13 @@ export default function Login() {
                   </button>
                 </div>
                 <p className="or">or</p>
-                <button className="btn1" onClick={googleLogin} onSubmit={handleRegister}><img src={require("../../../src/google-logo-9824.png")} alt="G" />Sign up with Google</button>
+                <button className="btn1" onClick={googleLogin}>
+                  <img
+                    src={require("../../../src/google-logo-9824.png")}
+                    alt="G"
+                  />
+                  Sign up with Google
+                </button>
                 <div className="regi-link">
                   <p>
                     Already have an account?{" "}
