@@ -1,4 +1,4 @@
-.users{
+.allUsers{
     height: 80px;
     width: 19.7vw;
     display: flex;
@@ -9,8 +9,6 @@
     border-radius: 0.7rem;
     border: none;
 
-
-    
 }
 .udp{
     height: 40px;
@@ -22,7 +20,7 @@
     justify-content: center;
     overflow: hidden;
 }
-.users:hover{
+.allUsers:hover{
     background-color: rgb(39, 39, 39);
     
 }

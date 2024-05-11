@@ -4,7 +4,7 @@ import MyProfile from './Components/Friends/MyProfile.jsx';
 import Login from './Components/LogIn/Login.jsx';
 import Messages from './Components/MyChat/Messages.jsx';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './Components/Firebase.js';
+import { auth } from './Items/Firebase.js';
 import {useUserStore} from "./Items/userStore.js"
 import Loading from './Items/Loading.jsx'
 

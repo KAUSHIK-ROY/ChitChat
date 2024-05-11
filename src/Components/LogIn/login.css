@@ -1,8 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
+
+
 .lcontainer{
     background-color: #25252b;
     min-height: 100vh;
@@ -24,7 +25,7 @@
 .logContainer .form-box{
     position: absolute;
     top:0;
-    width: 50%;
+    width: 36%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -62,7 +63,7 @@
 }
 
 .input-box input{
-    width: 100%;
+    width: 91%;
     height: 100%;
     background: transparent !important;
     border: none;
@@ -101,6 +102,7 @@
 .input-box .icn{
     position: absolute;
     top:50%;
+
     right: 0;
     transform: translateY(-50%);
     font-size: 18px;
@@ -173,7 +175,7 @@
     position: absolute;
     top:0;
     height: 100%;
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -191,18 +193,17 @@
 .info-content.register{
     left: 0;
     text-align: left;
-    padding: 0 150px 60px 40px;
+    padding:0px 40px;
     pointer-events: none;
     transform: translateX(0%);
-    /* -120 */
     transition: 0.7s ease;
 }
 
 
 
 .logo{
-    margin-top: -120px;
-    padding-bottom: 77px;
+    margin-top: -150px;
+    padding-bottom: 89px;
 }
 
 .info-content h2{

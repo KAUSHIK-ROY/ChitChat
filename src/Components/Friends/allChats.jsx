@@ -7,7 +7,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export default function AllChats() {
   return (
     <div>
-      <div className="users">
+      <div className="allUsers">
         <div className="udp">
           <FontAwesomeIcon icon={faUser} className='dpicon'/>
           

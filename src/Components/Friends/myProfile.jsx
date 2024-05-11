@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./myProfile.css";
 import AllChats from "./AllChats.jsx";
-import {auth} from '../Firebase.js';
-import { signOut} from "firebase/auth";
+import { auth } from "../../Items/Firebase.js";
+// import { signOut } from "firebase/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -84,13 +84,20 @@ export default function MyProfile() {
           </div>
           <div className="logAcc">
             <button className="switch-btn">Switch Account</button>
-            <div className="log"><button className="log-btn" onClick={()=>auth.signOut()}><span>Log Out</span></button></div>
+            <div className="log">
+              <button className="log-btn" onClick={() => auth.signOut()}>
+                <span>Log Out</span>
+              </button>
+            </div>
           </div>
         </div>
         <button className="bar-btn" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <h1>ChitChat</h1> <span className="isp"><FontAwesomeIcon icon={faComments}/></span>
+        <h1>ChitChat</h1>
+        <span className="isp">
+          <FontAwesomeIcon icon={faComments} />
+        </span>
       </div>
 
       <div className="mychats">
