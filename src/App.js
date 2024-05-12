@@ -7,11 +7,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './Items/Firebase.js';
 import {useUserStore} from "./Items/userStore.js"
 import Loading from './Items/Loading.jsx'
-
+// import { useChatStore } from "./lib/chatStore";
 
 function App() {
 
   const {currentUser,isLoading,fetchUserInfo} = useUserStore();
+  // const { chatId } = useChatStore();
 
   useEffect(() =>{
     const unsub = onAuthStateChanged(auth, (user) =>{
@@ -25,10 +26,7 @@ function App() {
   
 
   if(isLoading) return <div className='Reload'><Loading/>Loading...</div>
-  // if(!currentUser){
-  //   return <Login/>
-  //   console.log("Current user log:", currentUser);
-  // } 
+
   return (
 
       <div className='container'>

@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
   faBars,
-  // faBomb,
   faChevronDown,
   faCircleInfo,
   faComments,
@@ -17,16 +16,18 @@ import {
   faPhotoVideo,
   faSdCard,
   faSearch,
-  // faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
-// import { uerStore } from "../../Items/userStore.js";
+import { useUserStore } from "../../Items/userStore.js";
 
 export default function MyProfile() {
   const [menu, setMenu] = useState(false);
   let toggleMenu = () => {
     setMenu(!menu);
   };
+
+  const { currentUser } = useUserStore();
+
 
   // const {  resetChat } =
   // useChatStore();
