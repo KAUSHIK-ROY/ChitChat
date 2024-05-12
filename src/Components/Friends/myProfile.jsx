@@ -20,12 +20,22 @@ import {
   // faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
+// import { uerStore } from "../../Items/userStore.js";
 
 export default function MyProfile() {
   const [menu, setMenu] = useState(false);
   let toggleMenu = () => {
     setMenu(!menu);
   };
+
+  // const {  resetChat } =
+  // useChatStore();
+
+  const handleLogout = () => {
+    auth.signOut();
+    // resetChat();
+  };
+
   return (
     <div className="friends">
       <div className="menulogo">
@@ -85,7 +95,7 @@ export default function MyProfile() {
           <div className="logAcc">
             <button className="switch-btn">Switch Account</button>
             <div className="log">
-              <button className="log-btn" onClick={() => auth.signOut()}>
+              <button className="log-btn" onClick={handleLogout}>
                 <span>Log Out</span>
               </button>
             </div>

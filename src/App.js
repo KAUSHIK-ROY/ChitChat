@@ -16,13 +16,19 @@ function App() {
   useEffect(() =>{
     const unsub = onAuthStateChanged(auth, (user) =>{
       fetchUserInfo(user?.uid);
+      // console.log("Current user:", user);
     });
     return ()=>{
       unsub();
     }
   }, [fetchUserInfo]);
+  
 
   if(isLoading) return <div className='Reload'><Loading/>Loading...</div>
+  // if(!currentUser){
+  //   return <Login/>
+  //   console.log("Current user log:", currentUser);
+  // } 
   return (
 
       <div className='container'>
