@@ -18,7 +18,6 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
-import { useUserStore } from "../../Items/userStore.js";
 
 export default function MyProfile() {
   const [menu, setMenu] = useState(false);
@@ -26,9 +25,10 @@ export default function MyProfile() {
     setMenu(!menu);
   };
 
-  const { currentUser } = useUserStore();
-
-
+  const [addChat,setAddChat] = useState(false);
+  let toggleAddChat = ()=>{
+    setAddChat(!addChat);
+  }
   // const {  resetChat } =
   // useChatStore();
 
@@ -118,7 +118,12 @@ export default function MyProfile() {
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
           <div className="micn">
-            <FontAwesomeIcon icon={faPenToSquare} />
+            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat}/>
+            <div className="newChat">
+              <h2>New Chat</h2>
+              <input type="text" placeholder="Search email or name"/>
+              <button>Search</button>
+            </div>
             <FontAwesomeIcon icon={faStar} />
           </div>
         </div>
@@ -130,14 +135,6 @@ export default function MyProfile() {
         </div>
         <div className="allchats">
           <AllChats />
-          {/* <AllChats />
-          <AllChats />
-          <AllChats />
-          <AllChats />
-          <AllChats />
-          <AllChats />
-          <AllChats />
-          <AllChats /> */}
         </div>
       </div>
     </div>
