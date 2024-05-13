@@ -130,14 +130,14 @@ export default function MyProfile() {
         </div>
         <div className="allchats">
           <AllChats />
+          {/* <AllChats />
           <AllChats />
           <AllChats />
           <AllChats />
           <AllChats />
           <AllChats />
           <AllChats />
-          <AllChats />
-          <AllChats />
+          <AllChats /> */}
         </div>
       </div>
     </div>

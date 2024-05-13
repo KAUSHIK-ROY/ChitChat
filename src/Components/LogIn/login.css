@@ -33,18 +33,18 @@
 }
 
 .form-box.login{
-    left: 0;
+    left: -50%;
     padding: 0 50px;
-    transform: translateX(0%);
-    transition: 0.7s;
+    transform: translateX(100%);
+    transition: 0.7s ease;
 }
 
 
 
 .form-box.register{
-    right: 0;
+    right: -50%;
     padding: 0 50px;
-    transform: translateX(0%);
+    transform: translateX(-100%);
     transition: 0.7s ease;
 }
 
@@ -184,20 +184,21 @@
 .info-content.login{
     right: 0;
     text-align: right;
-    padding: 0 40px 60px 150px;
-    transform: translateX(0);
-    transition: 0.7s ease;
-}
+    padding: 0 40px 60px;
+    pointer-events: none;
+    /* transform: translateX();
+    transition: 0.7s ease;*/
+} 
 
 
 .info-content.register{
     left: 0;
     text-align: left;
-    padding:0px 40px;
+    padding:0px 40px 60px;
     pointer-events: none;
-    transform: translateX(0%);
-    transition: 0.7s ease;
-}
+    /* transform: translateX(0%);
+    transition: 0.7s ease; */
+} 
 
 
 
@@ -238,9 +239,7 @@
     background: #ff2770;
     border-top: 3px solid #ff2770;
     background: linear-gradient(157.5deg, #ff2770, #25252b);
-
     transform: rotate(-10deg) skewY(-40deg);
-    transform: translateY();
     transform-origin: bottom left ;
     transition: 1.5s ease;
 }
