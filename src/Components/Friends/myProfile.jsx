@@ -18,6 +18,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
+import NewChat from "./NewChat.jsx";
 
 export default function MyProfile() {
   const [menu, setMenu] = useState(false);
@@ -25,10 +26,10 @@ export default function MyProfile() {
     setMenu(!menu);
   };
 
-  const [addChat,setAddChat] = useState(false);
-  let toggleAddChat = ()=>{
+  const [addChat, setAddChat] = useState(false);
+  let toggleAddChat = () => {
     setAddChat(!addChat);
-  }
+  };
   // const {  resetChat } =
   // useChatStore();
 
@@ -118,12 +119,8 @@ export default function MyProfile() {
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
           <div className="micn">
-            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat}/>
-            <div className="newChat">
-              <h2>New Chat</h2>
-              <input type="text" placeholder="Search email or name"/>
-              <button>Search</button>
-            </div>
+            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} />
+            <NewChat/>
             <FontAwesomeIcon icon={faStar} />
           </div>
         </div>
