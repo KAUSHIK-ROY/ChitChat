@@ -13,6 +13,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useUserStore } from "../../Items/userStore";
+import dp from '../../Items/Man-dp.png'
 
 export default function NewChat() {
   const [user, setUser] = useState(null);
@@ -82,7 +83,7 @@ export default function NewChat() {
       {user && (
         <div className="nuser">
           <div className="ndetail">
-            {/* <img src={user.avatar} alt="" /> */}
+            <img src={user.avatar || dp} alt='DP' />
             <span>{user.userName}</span>
           </div>
           <button onClick={handleAdd}>Add User</button>

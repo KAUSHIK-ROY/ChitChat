@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './allChats.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useUserStore } from '../../Items/userStore';
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from '../../Items/Firebase';
+import dp from '../../Items/Man-dp.png'
 
 
 export default function AllChats() {
@@ -43,13 +44,10 @@ export default function AllChats() {
     <div>
       {chats.map((chat) =>(
       <div className="allUsers">
-        <div className="udp">
-          <FontAwesomeIcon icon={faUser} className='dpicon'/>
-          
-        </div>
-
+          {/* <FontAwesomeIcon icon={faUser} className='dpicon'/> */}
+        <img src={ dp} alt='DP' />
         <div className="shortdetail">
-          <h4>User 1</h4>
+          <h4>{chat.user.userName}</h4>
           <p>{chat.lastMessage}</p>
         </div>
       </div>

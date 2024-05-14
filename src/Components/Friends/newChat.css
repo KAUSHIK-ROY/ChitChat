@@ -1,9 +1,9 @@
 
 .newChat{
-    /* width: 20vw; */
+    width: auto;
     border: 1px solid rgb(90, 90, 90);
     position: fixed;
-    /* min-height: 20vh; */
+    min-height: 27vh;
     background-color:transparent;
     backdrop-filter: blur(10px);
     z-index: 100;
@@ -14,7 +14,7 @@
     flex-direction: column;
     border-radius: 10px;
     padding: 20px;
-    gap: 10px;
+    gap: 15px;
 
   
     input{
@@ -25,6 +25,7 @@
       outline: none;
       /* border-radius: 5px 0px 0px 5px; */
       padding-left: 5px;
+      margin-bottom: 20px;
     }
     button{
       height: 27px;
@@ -33,12 +34,13 @@
       border: none;
       /* border: 1px solid white; */
       padding: 0 10px;
-      margin-left: 15px;
+      margin-left: 20px;
     }
   }
   
   .nuser{
-    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.445);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,8 +53,12 @@
       }
     
     button{
+      display: flex;
+      align-items: center;
       padding: 10px;
-      border-radius: 10px;
+      margin-left: 50px;
+
+      /* border-radius: 10px; */
       background-color: #1a73e8;
       color: white;
       border: none;

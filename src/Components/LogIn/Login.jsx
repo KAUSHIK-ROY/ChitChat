@@ -92,7 +92,7 @@ export default function Login() {
             <div className="curved-shape2"></div>
             <div className="form-box register" >
               <h2>Register</h2>
-              <form onSubmit={handleRegister}>
+              <form onSubmit={handleRegister} autoComplete="off">
                 <div className="input-box">
                   <input type="text" required name="userName" />
                   <label>Username</label>
@@ -149,7 +149,7 @@ export default function Login() {
 
             <div className="form-box login">
               <h2>Login</h2>
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleLogin} autoComplete="off">
                 <div className="input-box" style={{ display: "none" }}></div>
                 <div className="input-box">
                   <input type="email" required name="email" />
