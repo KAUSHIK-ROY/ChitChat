@@ -8,7 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 // import Loading from "../../Items/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -54,6 +54,13 @@ export default function Login() {
     setLoading(true);
     const formData = new FormData(e.target);
     const { userName, email, password } = Object.fromEntries(formData);
+    // VALIDATE UNIQUE USERNAME
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("userName", "==", userName));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      return toast.warn("Select another userName");
+    }
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -92,7 +99,7 @@ export default function Login() {
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="mail" required name="email" />
+                  <input type="email" required name="email" />
                   <label htmlFor="">Email</label>
                   <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>
@@ -145,7 +152,7 @@ export default function Login() {
               <form onSubmit={handleLogin}>
                 <div className="input-box" style={{ display: "none" }}></div>
                 <div className="input-box">
-                  <input type="mail" required name="email" />
+                  <input type="email" required name="email" />
                   <label htmlFor="">Email Id</label>
                   <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>

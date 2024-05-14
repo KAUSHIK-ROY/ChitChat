@@ -43,7 +43,7 @@ export default function MyProfile() {
       <div className="menulogo">
         <div className={`slideMenu ${menu ? "activeSlideMenu" : ""}`}>
           <div className="btn">
-            <button className="bar-btn" onClick={toggleMenu}>
+            <button className="all-btn" onClick={toggleMenu}>
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
           </div>
@@ -103,7 +103,7 @@ export default function MyProfile() {
             </div>
           </div>
         </div>
-        <button className="bar-btn" onClick={toggleMenu}>
+        <button className="all-btn" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </button>
         <h1>ChitChat</h1>
@@ -119,9 +119,9 @@ export default function MyProfile() {
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
           <div className="micn">
-            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} />
-            <NewChat/>
-            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} className="all-btn1"/>
+            {addChat? (<NewChat/>) : ''}
+            <FontAwesomeIcon icon={faStar} className="all-btn1"/>
           </div>
         </div>
         <div className="usearch">

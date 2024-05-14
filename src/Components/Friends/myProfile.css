@@ -16,37 +16,41 @@ button{
   background-color: rgb(21, 21, 21);
   border-bottom: 0.5px solid rgb(56, 56, 56);
 
-  .bar-btn {
-    height: 35px;
-    width: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    background-color: transparent;
-    font-size: larger;
-  }
-  .back-btn {
-    height: 35px;
-    width: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    background-color: transparent;
-    font-size: larger;
-  }
-
 }
 
+.all-btn {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background-color: transparent;
+  font-size: larger;
+}
+
+.all-btn:hover {
+  background-color: rgb(63, 63, 63);
+}
+
+.all-btn:active {
+  background-color: #5183fe;
+}
+
+
+.all-btn1:hover {
+  color: #5183fe;
+}
+
+.all-btn1:active {
+  color: white;
+}
 .menulogo h1 {
   color: #5485ff;
   font-family: "Poetsen One", sans-serif;
-  padding-left: 50px;
+  padding-left:5vw;
 
 
 }
@@ -187,14 +191,6 @@ button{
 }
 .activeSlideMenu {
   left: 0%;
-}
-
-.bar-btn:hover {
-  background-color: rgb(63, 63, 63);
-}
-
-.bar-btn:active {
-  background-color: #5183fe;
 }
 
 

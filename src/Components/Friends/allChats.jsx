@@ -14,7 +14,7 @@ export default function AllChats() {
   
   useEffect(() => {
     const unSub = onSnapshot(
-      doc(db, "userchats", currentUser.id),
+      doc(db, "userChats", currentUser.id),
       async (res) => {
         const items = res.data().chats;
 
