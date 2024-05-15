@@ -1,4 +1,13 @@
-
+.loadingDiv{
+   display: flex;
+   align-items: center;
+   gap: 5vmin ;
+   
+   h2{
+      color: #585858;
+      
+   }
+}
 
 .spinner {
     width: 56px;
@@ -7,6 +16,7 @@
     border: 9px solid #585858;
     animation: spinner-bulqg1 0.8s infinite linear alternate,
          spinner-oaa3wk 1.6s infinite linear;
+   
  }
  
  @keyframes spinner-bulqg1 {

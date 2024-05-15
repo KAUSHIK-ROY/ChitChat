@@ -15,6 +15,7 @@
     border-radius: 10px;
     padding: 20px;
     gap: 15px;
+    
 
   
     input{
@@ -39,11 +40,16 @@
   }
   
   .nuser{
-    padding-top: 40px;
+    padding-top: 20px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-top: 1px solid rgba(255, 255, 255, 0.445);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-width: 252px;
 
     img{
         width: 50px;
@@ -63,6 +69,9 @@
       color: white;
       border: none;
       cursor: pointer;
+    }
+    h3{
+      color: rgba(255, 255, 255, 0.138);
     }
   }
 

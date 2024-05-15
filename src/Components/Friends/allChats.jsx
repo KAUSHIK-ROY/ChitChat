@@ -48,7 +48,7 @@ export default function AllChats() {
         <img src={ dp} alt='DP' />
         <div className="shortdetail">
           <h4>{chat.user.userName}</h4>
-          <p>{chat.lastMessage}</p>
+          <p>{chat.lastMessage}Demo chat</p>
         </div>
       </div>
     ))}

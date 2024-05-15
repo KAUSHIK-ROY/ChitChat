@@ -13,14 +13,17 @@ import {
   where,
 } from "firebase/firestore";
 import { useUserStore } from "../../Items/userStore";
-import dp from '../../Items/Man-dp.png'
+import dp from "../../Items/Man-dp.png";
+import Loading from "../../Items/Loading";
 
 export default function NewChat() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { currentUser } = useUserStore();
   const handleSearch = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData(e.target);
     const userName = formData.get("userName");
 
@@ -32,10 +35,19 @@ export default function NewChat() {
       const querySnapShot = await getDocs(q);
 
       if (!querySnapShot.empty) {
-        setUser(querySnapShot.docs[0].data());
+        const searchedUser = querySnapShot.docs[0].data();
+        if (searchedUser.userName === currentUser.userName) {
+          setUser(null);
+        } else {
+          setUser(searchedUser);
+        }
+      } else {
+        setUser(null);
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,18 +89,26 @@ export default function NewChat() {
     <div className="newChat">
       <h2>New Chat</h2>
       <form autoComplete="off" onSubmit={handleSearch}>
-        <input type="text" placeholder="Search email or name" name="userName" />
+        <input type="text" placeholder="Search user name" name="userName" />
         <button>Search</button>
       </form>
-      {user && (
-        <div className="nuser">
-          <div className="ndetail">
-            <img src={user.avatar || dp} alt='DP' />
-            <span>{user.userName}</span>
-          </div>
-          <button onClick={handleAdd}>Add User</button>
-        </div>
-      )}
+      <div className="nuser">
+        {user ? (
+          <>
+            <div className="ndetail">
+              <img src={user.avatar || dp} alt="DP" />
+              <span>{user.userName}</span>
+            </div>
+            <button onClick={handleAdd}>Add User</button>
+          </>
+        ) : loading ? (
+          <>
+            <Loading />
+          </>
+        ) : (
+          <h3>No user found</h3>
+        )}
+      </div>
     </div>
   );
 }

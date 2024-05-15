@@ -31,7 +31,7 @@ export default function TypingDiv(props) {
             onClick={() => setOpen((prev) => !prev)}
           />
           <div className="picker">
-            <EmojiPicker open={open} />
+            <EmojiPicker open={open} theme="dark"/>
           </div>
           <textarea
             placeholder="Type a message..."
