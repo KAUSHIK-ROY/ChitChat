@@ -21,7 +21,7 @@ export default function NewChat() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
   const [isAlreadyInChat, setIsAlreadyInChat] = useState(false);
-  const [addButton, setAddButton] = useState(true)
+  const [addButton, setAddButton] = useState(true);
 
   const { currentUser } = useUserStore();
   const handleSearch = async (e) => {
@@ -42,6 +42,7 @@ export default function NewChat() {
         if (searchedUser.userName === currentUser.userName) {
           setUser(null);
         } else {
+          setAddButton(true);
           setUser(searchedUser);
           checkIfUserIsInChat(searchedUser.id);
         }
@@ -78,7 +79,7 @@ export default function NewChat() {
     const chatRef = collection(db, "chats");
     const userChatsRef = collection(db, "userChats");
     // setUser(null);
-    setAddButton(null)
+    setAddButton(false);
 
     try {
       const newChatRef = doc(chatRef);
@@ -125,8 +126,11 @@ export default function NewChat() {
               <span>{user.userName}</span>
             </div>
             {/* {!isAlreadyInChat && <button onClick={handleAdd}>Add User</button>} */}
-            {!isAlreadyInChat && addButton ? (<button onClick={handleAdd}>Add User</button>) : ''}
-
+            {!isAlreadyInChat && addButton ? (
+              <button onClick={handleAdd}>Add User</button>
+            ) : (
+              ""
+            )}
           </>
         ) : loading ? (
           <>
