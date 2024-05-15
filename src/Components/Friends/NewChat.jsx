@@ -78,7 +78,6 @@ export default function NewChat() {
   const handleAdd = async () => {
     const chatRef = collection(db, "chats");
     const userChatsRef = collection(db, "userChats");
-    // setUser(null);
     setAddButton(false);
 
     try {
@@ -125,7 +124,6 @@ export default function NewChat() {
               <img src={user.avatar || dp} alt="DP" />
               <span>{user.userName}</span>
             </div>
-            {/* {!isAlreadyInChat && <button onClick={handleAdd}>Add User</button>} */}
             {!isAlreadyInChat && addButton ? (
               <button onClick={handleAdd}>Add User</button>
             ) : (
