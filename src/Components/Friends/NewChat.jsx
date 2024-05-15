@@ -5,6 +5,7 @@ import {
   arrayUnion,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   serverTimestamp,
@@ -18,7 +19,9 @@ import Loading from "../../Items/Loading";
 
 export default function NewChat() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
+  const [isAlreadyInChat, setIsAlreadyInChat] = useState(false);
+  const [addButton, setAddButton] = useState(true)
 
   const { currentUser } = useUserStore();
   const handleSearch = async (e) => {
@@ -40,6 +43,7 @@ export default function NewChat() {
           setUser(null);
         } else {
           setUser(searchedUser);
+          checkIfUserIsInChat(searchedUser.id);
         }
       } else {
         setUser(null);
@@ -51,9 +55,30 @@ export default function NewChat() {
     }
   };
 
+  const checkIfUserIsInChat = async (searchedUserId) => {
+    try {
+      const userChatsRef = doc(db, "userChats", currentUser.id);
+      const userChatsDoc = await getDoc(userChatsRef);
+
+      if (userChatsDoc.exists()) {
+        const chats = userChatsDoc.data().chats || [];
+        const userInChat = chats.some(
+          (chat) => chat.receiverId === searchedUserId
+        );
+        setIsAlreadyInChat(userInChat);
+      } else {
+        setIsAlreadyInChat(false);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleAdd = async () => {
     const chatRef = collection(db, "chats");
     const userChatsRef = collection(db, "userChats");
+    // setUser(null);
+    setAddButton(null)
 
     try {
       const newChatRef = doc(chatRef);
@@ -99,7 +124,9 @@ export default function NewChat() {
               <img src={user.avatar || dp} alt="DP" />
               <span>{user.userName}</span>
             </div>
-            <button onClick={handleAdd}>Add User</button>
+            {/* {!isAlreadyInChat && <button onClick={handleAdd}>Add User</button>} */}
+            {!isAlreadyInChat && addButton ? (<button onClick={handleAdd}>Add User</button>) : ''}
+
           </>
         ) : loading ? (
           <>
