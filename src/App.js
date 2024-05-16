@@ -16,7 +16,7 @@ function App() {
 
   const toggleAbout = () => {
     setAboutChat(!aboutChat);
-    console.log("work");
+    // console.log("Working");
   };
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
   // const { chatId } = useChatStore();

@@ -1,7 +1,5 @@
 .aboutContainer {
   height: 100vh;
-  /* width: 50vw; */
-  right: 0;
   background-color: rgba(39, 39, 39, 0.749);
   /* transition: transform 0.3s ease-in-out; */
   display: flex;
@@ -10,13 +8,13 @@
 
   img {
     margin-top: 20px;
-    height: 200px;
-    width: 200px;
+    height: 170px;
+    width: 170px;
     object-fit: cover;
     overflow: hidden;
+    margin-bottom: 20px;
   }
   h2 {
-    margin-top: 20px;
     color: rgb(255, 255, 255);
   }
 }
@@ -39,8 +37,37 @@
   text-shadow: none;
 }
 
-
 /* .btn{
     from chatNav.css
 } */
 
+.media {
+  height: 400px;
+  width: 100%;
+
+  h2 {
+    padding: 10px;
+    color: #ffffff5a;
+    font-size: 16px;
+  }
+}
+
+.allMedia {
+  margin: 10px;
+  /* border: 1px solid white; */
+  height: 83%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-y: scroll;
+}
+
+.blank {
+  width: 113px;
+  height: 113px;
+  background-color: #3498db;
+  box-sizing: border-box;
+  border: 0.5px solid rgba(255, 255, 255, 0.244);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
