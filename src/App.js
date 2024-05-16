@@ -49,7 +49,7 @@ function App() {
             <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
             {aboutChat && (
               <div className="aboutChat">
-                <AboutChat />
+                <AboutChat toggleAbout={toggleAbout}/>
               </div>
             )}
           </div>
