@@ -44,7 +44,6 @@ export default function AllChats() {
     <div>
       {chats.map((chat) =>(
       <div className="allUsers">
-          {/* <FontAwesomeIcon icon={faUser} className='dpicon'/> */}
         <img src={ dp} alt='DP' />
         <div className="shortdetail">
           <h4>{chat.user.userName}</h4>

@@ -13,7 +13,7 @@ export default function ChatNav({aboutChat, toggleAbout}) {
         <div className="udetails">
           <div className="uicon">
             <FontAwesomeIcon icon={faUser} className='myicon' onClick={toggleAbout}/>
-        {aboutChat && (<AboutChat/>) }
+        {aboutChat && (<AboutChat toggleAbout={toggleAbout} showAbout={aboutChat} />) }
           </div>
           <div className="uname">
             <h4>Kaushik</h4>

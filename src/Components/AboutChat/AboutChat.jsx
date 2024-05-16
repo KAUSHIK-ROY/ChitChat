@@ -1,10 +1,29 @@
 import React from 'react'
 import './aboutChat.css'
+import dp from '../../Items/Man-dp.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
 
-export default function AboutChat() {
+    faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+
+export default function AboutChat({toggleAbout}) {
+    
   return (
+    <>
+    
     <div className='aboutContainer'>
-        hiii
+        <div className="btn">
+            <button className="all-btn" onClick={toggleAbout} >
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+        </div>
+        <img src={ dp} alt='DP' />
+        <h2>Hii</h2>
+
+        <button className="block-btn">Block User</button>
+
     </div>
+    </>
   )
 }

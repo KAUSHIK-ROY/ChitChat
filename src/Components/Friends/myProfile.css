@@ -92,7 +92,7 @@ button{
   gap: 20px;
 }
 .switch-btn,
-.log-btn {
+.log-btn { 
   height: 50px;
   width: 20vw;
   border-radius: 10px;

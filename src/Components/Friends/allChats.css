@@ -8,6 +8,7 @@
     /* border: 1px solid white; */
     border-radius: 0.7rem;
     border: none;
+    overflow: hidden;
 
     img{
         height: 50px;
