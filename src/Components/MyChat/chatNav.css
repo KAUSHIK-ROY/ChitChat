@@ -6,6 +6,8 @@
     align-items: center;
     /* border: 0.5px solid white; */
     background-color: rgb(18, 18, 18);
+    transition: transform 0.3s ease-in-out;
+
 }
 .udetails{
     display: flex;
@@ -32,7 +34,7 @@
 .socialIcons{
     font-size: 20px;
     display: flex;
-    gap: 4vmin;
+    gap: 2vw;
     padding-right: 6vmin;
 
     .nav-btn{

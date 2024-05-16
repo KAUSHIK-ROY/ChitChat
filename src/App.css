@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    
 }
 
 body{
@@ -13,6 +14,7 @@ body{
     align-items: center;
     height: 100vh;
     width: 100vw;
+    position: relative;
     overflow: hidden;
 }
 
@@ -21,21 +23,17 @@ body{
     height: 100vh;
     width: 25vw;
     overflow: hidden;
-    position: absolute;
-    /* border: 1px solid white; */
+    position: relative;
 }
 
 .myChat{
     height: 100vh;
     width: 75vw; 
-    left: 25vw;
-    /* position: fixed; */
+    /* left: 25vw; */
     display: flex;
+    transition: transform 0.3s ease-in-out;
 }
 
-.myChat:after{
-    width: 52vw;
-}
 
 .Reload{
     height: 100vh;
@@ -47,12 +45,7 @@ body{
 }
 
 .aboutChat{
-    width: 23vw;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    width: 45vw;
     transition: transform 0.3s ease-in-out;
     transform: translateX(0%);
-    z-index: 500;
 }
