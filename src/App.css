@@ -16,18 +16,25 @@ body{
     overflow: hidden;
 }
 
+
 .friends{
     height: 100vh;
     width: 25vw;
     overflow: hidden;
+    position: absolute;
     /* border: 1px solid white; */
-
 }
 
 .myChat{
     height: 100vh;
-    width: 75vw;
+    width: 75vw; 
+    left: 25vw;
+    /* position: fixed; */
+    display: flex;
+}
 
+.myChat:after{
+    width: 52vw;
 }
 
 .Reload{
@@ -37,4 +44,15 @@ body{
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.aboutChat{
+    width: 23vw;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0%);
+    z-index: 500;
 }

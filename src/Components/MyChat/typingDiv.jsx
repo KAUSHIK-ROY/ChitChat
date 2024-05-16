@@ -9,7 +9,7 @@ import {
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import EmojiPicker from "emoji-picker-react";
 
-export default function TypingDiv(props) {
+export default function TypingDiv() {
   let [open, setOpen] = useState(false);
 
   const [data, setData] = useState("");

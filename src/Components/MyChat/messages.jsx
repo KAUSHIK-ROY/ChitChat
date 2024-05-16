@@ -3,17 +3,17 @@ import "./message.css";
 import TypingDiv from "./TypingDiv.jsx";
 import ChatNav from "./ChatNav.jsx";
 
-export default function Messages(props) {
+export default function Messages({aboutChat, toggleAbout}) {
   const endRef = useRef(null);
-
+  
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
-
+  
   return (
     <div>
       <div className="msg">
-        <ChatNav />
+        <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat}/>
         <div className="personalchat">
 {/* demo */}
           <div className="message">
@@ -119,7 +119,7 @@ export default function Messages(props) {
             <div className="text">
               <p>Hello.</p>
               <p>Nice to meet you.</p>
-              <p>{props.data}</p>
+              <p></p>
               <span>1 min ago</span>
             </div>
           </div>
