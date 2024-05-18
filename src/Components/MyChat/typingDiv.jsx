@@ -56,7 +56,7 @@ export default function TypingDiv() {
       const userIDs = [currentUser.id, user.id];
 
       userIDs.forEach(async (id) => {
-        const userChatsRef = doc(db, "userchats", id);
+        const userChatsRef = doc(db, "userChats", id);
         const userChatsSnapshot = await getDoc(userChatsRef);
 
         if (userChatsSnapshot.exists()) {

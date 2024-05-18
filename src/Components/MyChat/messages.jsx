@@ -2,38 +2,41 @@ import React, { useEffect, useRef, useState } from "react";
 import "./message.css";
 import TypingDiv from "./TypingDiv.jsx";
 import ChatNav from "./ChatNav.jsx";
+import { useUserStore } from "../../Items/userStore.js";
+import { useChatStore } from "../../Items/chatStore.js";
 
-export default function Messages({aboutChat, toggleAbout}) {
+export default function Messages({ aboutChat, toggleAbout }) {
   const endRef = useRef(null);
-  
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
-  
+
+  const { chat } = useChatStore();
+
   return (
     <div>
       <div className="msg">
-        <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat}/>
-        <div className='personalchat '>
-{/* demo */}
-
-          <div className="message">
-            <div className="text">
-              <p>Hii, I am Hitosi.</p>
-              <span>1 min ago</span>
+        <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat} />
+        <div className="personalchat ">
+          {chat?.messages?.map((message) => (
+            <div className="message">
+              <div className="text">
+                <p>{message.text}</p>
+                {/* <span>{format(message.createdAt.toDate())}</span> */}
+              </div>
             </div>
-          </div>
-          <div className="message own">
-            <div className="text">
-              <p>Hello.</p>
-              <p>lorem50</p>
-              <p>Nice to meet you.</p>
-              <p></p>
-              <span>1 min ago</span>
+          ))}
+          {/* {img.url && ( */}
+          {
+            <div className="message own">
+              <div className="text">
+                {/* <img src={img.url} alt="" /> */}
+                {/* <span>{format(message.createdAt.toDate())}</span> */}
+              </div>
             </div>
-          </div>
+          }
 
-{/* demo end */}
           <div ref={endRef}></div>
         </div>
 

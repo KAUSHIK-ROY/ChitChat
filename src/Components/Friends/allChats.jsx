@@ -53,19 +53,20 @@ export default function AllChats() {
 
     userChats[chatIndex].isSeen = true;
 
-    const userChatsRef = doc(db, "userchats", currentUser.id);
+    const userChatsRef = doc(db, "userChats", currentUser.id);
 
     try {
       await updateDoc(userChatsRef, {
         chats: userChats,
       });
       changeChat(chat.chatId, chat.user);
+      // console.log(chat.chatId, chat.user)
     } catch (err) {
       console.log(err);
     }
   };
   // const filteredChats = chats.filter((c) =>
-  //   c.user.username.toLowerCase().includes(inputs.toLowerCase())
+  //   c.user.userName.toLowerCase().includes(inputs.toLowerCase())
   // );
   
 
@@ -76,7 +77,7 @@ export default function AllChats() {
       // style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",}}
         >
         <img src={ chat.user.blocked.includes(currentUser.id)
-                ? "./avatar.png"
+                ? dp
                 : chat.user.avatar || dp} alt='DP' />
         <div className="shortdetail">
           <h4>{chat.user.userName}</h4>

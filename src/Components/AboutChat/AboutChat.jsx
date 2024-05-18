@@ -3,8 +3,12 @@ import "./aboutChat.css";
 import dp from "../../Items/Man-dp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { useUserStore } from "../../Items/userStore";
+import { useChatStore } from "../../Items/chatStore";
 
 export default function AboutChat({ toggleAbout }) {
+  // const { currentUser } = useUserStore();
+  const {user} = useChatStore();
   return (
     <>
       <div className="aboutContainer">
@@ -13,8 +17,8 @@ export default function AboutChat({ toggleAbout }) {
             <FontAwesomeIcon icon={faXmark} />
           </button>
         </div>
-        <img src={dp} alt="DP" />
-        <h2>Aditya</h2>
+        <img src={user?.avatar || dp} alt="DP" />
+        <h2>{user?.userName}</h2>
         <div className="media">
             <h2>Media</h2>
             <div className="allMedia">
