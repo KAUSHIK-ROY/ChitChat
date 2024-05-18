@@ -1,7 +1,7 @@
 .aboutContainer {
   height: 100vh;
+  /* width: 23.4vw; */
   background-color: rgba(39, 39, 39, 0.749);
-  /* transition: transform 0.3s ease-in-out; */
   display: flex;
   align-items: center;
   flex-direction: column;

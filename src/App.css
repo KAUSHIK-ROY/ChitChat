@@ -28,10 +28,10 @@ body{
 
 .myChat{
     height: 100vh;
-    width: 75vw; 
-    /* left: 25vw; */
+    /* width: 75vw;  */
     display: flex;
     transition: transform 0.3s ease-in-out;
+    /* border: 1px solid white; */
 }
 
 
@@ -45,7 +45,8 @@ body{
 }
 
 .aboutChat{
-    width: 45vw;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0%);
+    /* width: 45vw; */
+    /* width: 25vw; */
+    transition: transform 0.31s ease-in-out;
+    position: relative;
 }

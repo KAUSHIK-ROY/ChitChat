@@ -56,14 +56,11 @@ button{
 }
 
 .isp{
-
     display: flex;
     align-items: start;
     width: 20px;
     height: 40px;
-    
     padding-left: 5px;
-
 }
 .slideMenu {
   width: 23vw;

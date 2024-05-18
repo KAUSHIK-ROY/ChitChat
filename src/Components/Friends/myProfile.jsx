@@ -38,6 +38,11 @@ export default function MyProfile() {
     // resetChat();
   };
 
+  // const [chats, setChats] = useState([]);
+  // const [input, setInput] = useState("");
+  // const filteredChats = chats.filter((c) =>
+  //   c.user.username.toLowerCase().includes(input.toLowerCase())
+  // );
   return (
     <div className="friends">
       <div className="menulogo">
@@ -128,10 +133,12 @@ export default function MyProfile() {
           <button className="sbtn">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          <input type="text" placeholder="Search" />
+          {/* <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)}/> */}
+          <input type="text" placeholder="Search"/>
         </div>
         <div className="allchats">
-          <AllChats />
+          {/* <AllChats filteredChats={filteredChats}/> */}
+          <AllChats/>
         </div>
       </div>
     </div>

@@ -8,8 +8,9 @@ import { auth } from "./Items/Firebase.js";
 import { useUserStore } from "./Items/userStore.js";
 import Loading from "./Items/Loading.jsx";
 import AboutChat from "./Components/AboutChat/AboutChat.jsx";
-import ChatNav from "./Components/MyChat/ChatNav.jsx";
-// import { useChatStore } from "./lib/chatStore";
+import { useChatStore } from "./Items/chatStore.js";
+// import ChatNav from "./Components/MyChat/ChatNav.jsx";
+
 
 function App() {
   const [aboutChat, setAboutChat] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     // console.log("Working");
   };
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
-  // const { chatId } = useChatStore();
+  const { chatId } = useChatStore();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
@@ -37,7 +38,7 @@ function App() {
         <Loading />
       </div>
     );
-
+ 
   return (
     <div className="container">
       {currentUser ? (
@@ -47,12 +48,12 @@ function App() {
           </div>
           <div className="myChat">
             <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
+            </div>
             {aboutChat && (
               <div className="aboutChat">
                 <AboutChat toggleAbout={toggleAbout}/>
               </div>
             )}
-          </div>
         </>
       ) : (
         <Login />

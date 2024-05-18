@@ -3,15 +3,18 @@ import './allChats.css';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useUserStore } from '../../Items/userStore';
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from '../../Items/Firebase';
 import dp from '../../Items/Man-dp.png'
+import { useChatStore } from '../../Items/chatStore';
 
 
 export default function AllChats() {
   
   const [chats, setChats] = useState([]);
   const { currentUser } = useUserStore();
+  const { chatId, changeChat } = useChatStore();
+
   
   useEffect(() => {
     const unSub = onSnapshot(
@@ -37,17 +40,47 @@ export default function AllChats() {
       unSub();
     };
   }, [currentUser.id]);
+  
 
+  const handleSelect = async (chat) => {
+    const userChats = chats.map((item) => {
+      const { user, ...rest } = item;
+      return rest;
+    });
+    const chatIndex = userChats.findIndex(
+      (item) => item.chatId === chat.chatId
+    );
+
+    userChats[chatIndex].isSeen = true;
+
+    const userChatsRef = doc(db, "userchats", currentUser.id);
+
+    try {
+      await updateDoc(userChatsRef, {
+        chats: userChats,
+      });
+      changeChat(chat.chatId, chat.user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // const filteredChats = chats.filter((c) =>
+  //   c.user.username.toLowerCase().includes(inputs.toLowerCase())
+  // );
   
 
   return (
     <div>
-      {chats.map((chat) =>(
-      <div className="allUsers">
-        <img src={ dp} alt='DP' />
+      {chats.map((chat) =>(                      /*filteredChat*/
+      <div className="allUsers" key={chat.chatId} onClick={()=>handleSelect(chat)} 
+      // style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",}}
+        >
+        <img src={ chat.user.blocked.includes(currentUser.id)
+                ? "./avatar.png"
+                : chat.user.avatar || dp} alt='DP' />
         <div className="shortdetail">
           <h4>{chat.user.userName}</h4>
-          <p>{chat.lastMessage}Demo chat</p>
+          <p>{chat.lastMessage}</p>
         </div>
       </div>
     ))}

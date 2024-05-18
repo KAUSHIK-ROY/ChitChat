@@ -14,7 +14,7 @@ export default function AboutChat({ toggleAbout }) {
           </button>
         </div>
         <img src={dp} alt="DP" />
-        <h2>Hii</h2>
+        <h2>Aditya</h2>
         <div className="media">
             <h2>Media</h2>
             <div className="allMedia">
