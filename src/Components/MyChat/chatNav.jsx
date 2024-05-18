@@ -1,15 +1,13 @@
-// import React, { useState } from 'react';
 import './chatNav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
 import AboutChat from '../AboutChat/AboutChat.jsx';
 import dp from '../../Items/Man-dp.png'
 import { useChatStore } from '../../Items/chatStore.js';
-// import { useUserStore } from '../../Items/userStore.js';
 
 export default function ChatNav({aboutChat, toggleAbout}) {
-  const {user} = useChatStore;
-  // const { currentUser } = useUserStore();
+  const {user} = useChatStore();
+
   return (
     <>
       <div className='user'>
