@@ -46,14 +46,14 @@ function App() {
           <div className="friends">
             <MyProfile />
           </div>
-          <div className="myChat">
+          <div className={`myChat ${aboutChat ? 'active':''}`}>
             <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
-            </div>
-            {aboutChat && (
-              <div className="aboutChat">
+          </div>
+            {/* {aboutChat && ( */}
+              <div className={`aboutChat ${aboutChat ? 'active': ''}`}>
                 <AboutChat toggleAbout={toggleAbout}/>
-              </div>
-            )}
+            {/* )} */}
+          </div>
         </>
       ) : (
         <Login />

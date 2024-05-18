@@ -14,7 +14,7 @@ export default function Messages({aboutChat, toggleAbout}) {
     <div>
       <div className="msg">
         <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat}/>
-        <div className="personalchat">
+        <div className='personalchat '>
 {/* demo */}
 
           <div className="message">
