@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./myProfile.css";
 import AllChats from "./AllChats.jsx";
 import { auth } from "../../Items/Firebase.js";
-// import { signOut } from "firebase/auth";
-
+import dp from '../../Items/Man-dp.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -19,8 +18,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
 import NewChat from "./NewChat.jsx";
+import { useUserStore } from "../../Items/userStore.js";
+import { useChatStore } from "../../Items/chatStore.js";
 
 export default function MyProfile() {
+  const {user} = useChatStore();
   const [menu, setMenu] = useState(false);
   let toggleMenu = () => {
     setMenu(!menu);
@@ -56,43 +58,36 @@ export default function MyProfile() {
             <ul>
               <li>
                 <div className="idiv">
-                  {" "}
-                  {/* <FontAwesomeIcon icon={faBomb} /> */}
-                  <img src=" " alt="" />
+                  <img src={user?.avatar || dp} alt="" />
                 </div>
                 <div className="iname">My Profile </div>
               </li>
               <li>
                 <div className="idiv">
-                  {" "}
                   <FontAwesomeIcon icon={faBell} />
                 </div>
                 <div className="iname">Notifications </div>
               </li>
               <li>
                 <div className="idiv">
-                  {" "}
                   <FontAwesomeIcon icon={faPhotoVideo} />
                 </div>
                 <div className="iname">Images & videos</div>
               </li>
               <li>
                 <div className="idiv">
-                  {" "}
                   <FontAwesomeIcon icon={faSdCard} />
                 </div>
                 <div className="iname">Storage </div>
               </li>
               <li>
                 <div className="idiv">
-                  {" "}
                   <FontAwesomeIcon icon={faGear} />
                 </div>
                 <div className="iname">Settings </div>
               </li>
               <li>
                 <div className="idiv">
-                  {" "}
                   <FontAwesomeIcon icon={faCircleInfo} />
                 </div>
                 <div className="iname">About us </div>

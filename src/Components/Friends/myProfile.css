@@ -51,8 +51,6 @@ button{
   color: #5485ff;
   font-family: "Poetsen One", sans-serif;
   padding-left:5vw;
-
-
 }
 
 .isp{
@@ -154,26 +152,33 @@ button{
 
 .allList {
   display: flex;
+  justify-content: center;
   margin-top: 22px;
 
   ul {
-    padding-left: 20px;
 
     li {
+      width: 23vw;
       display: flex;
       gap: 2vw;
       list-style: none;
-      padding: 20px 10px;
+      padding: 20px 0px;
       cursor: pointer;
       .idiv {
         display: flex;
-        /* margin-left: 1vw; */
+        margin-left: 2vw;
         align-items: center;
         justify-content: center;
         width: 30px;
         height: 30px;
         font-size: 20px;
-        /* border: 1px solid black; */
+        overflow: hidden;
+
+          img{
+            height: 30px;
+            width: 30px;
+
+        }
       }
       .iname {
         width: 15vw;
