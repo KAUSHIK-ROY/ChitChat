@@ -1,8 +1,71 @@
 .profile{
-    position: fixed;
-    left: 23vw;
-    height:64vh;
-    width: 23vw;
-    background-color:black;
-    top: 0vh;
+    /* width: 23vw; */
+    /* height:64vh; */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: bisque; */
+    gap: 20px;
+
+}
+.myDp{
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+
+    img{
+        height: 175px;
+        width: 175px;
+        object-fit: cover;
+    }
+}
+
+.edit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    button{
+        height: 35px;
+        width: 35px;
+        background-color: transparent;
+        border-radius: 7px;
+        border: none;
+        color: white;
+
+        &:hover{
+            background-color: #5183fe;
+        }
+    }
+    
+    .inp-btn{
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid white;
+
+        input{
+            height: 35px;
+            width: 13vw;
+            border: none;
+            color: white;
+            background-color: transparent;
+            outline: none;
+            /* padding-left: 10px; */
+            font-size: 25px;
+            font-weight: bold;
+        }
+        button{
+            width: 50px;
+            height: 30px;
+            background-color: #5183fe;
+            
+        }
+    }
+    
 }

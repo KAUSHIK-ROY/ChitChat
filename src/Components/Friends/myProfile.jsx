@@ -26,6 +26,9 @@ export default function MyProfile() {
   const [menu, setMenu] = useState(false);
   const [subMenu, setSubMenu] = useState(null);
 
+  // const [myProfile,setMyProfile] = useState(false);
+
+
   const toggleMenu = () => {
     setMenu(!menu);
   };
@@ -35,6 +38,7 @@ export default function MyProfile() {
       setSubMenu(null);
     } else {
       setSubMenu(index);
+
     }
   };
 
@@ -49,10 +53,14 @@ export default function MyProfile() {
   };
 
   const subMenuRef = useRef();
+  const addChatRef = useRef();
   useEffect(()=>{
     let handler = (e)=>{
       if( !subMenuRef.current.contains(e.target)){
         setSubMenu(null);
+      }
+      if( !addChatRef.current.contains(e.target)){
+        setAddChat(false);
       }
     }
     document.addEventListener('mousedown', handler)
@@ -71,9 +79,9 @@ export default function MyProfile() {
             </button>
           </div>
           <div className="allList" ref={subMenuRef}>
-            {subMenu !== null && <SubMenu />}
+            {subMenu !== null && <SubMenu subMenu={subMenu}/>}
             <ul>
-              <li onClick={() => toggleSubMenu(0)}>
+              <li onClick={() => toggleSubMenu(0)} >
                 <div className="idiv">
                   <img src={user?.avatar || dp} alt="" />
                 </div>
@@ -135,7 +143,7 @@ export default function MyProfile() {
             <h2>Messages</h2>
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
-          <div className="micn">
+          <div className="micn" ref={addChatRef} >
             <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} className="all-btn1" />
             {addChat && <NewChat />}
             <FontAwesomeIcon icon={faStar} className="all-btn1" />
