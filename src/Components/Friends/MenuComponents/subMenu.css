@@ -1,0 +1,32 @@
+.subMenu{
+    position: fixed;
+    left: 23vw;
+    height:64vh;
+    width: 23vw;
+    background-color: rgb(48, 48, 48);
+    top: 0;
+    border: 1px solid rgb(90, 90, 90);
+    border-top: none;
+
+}
+
+
+
+
+
+
+
+
+
+    /* transform-origin: 0 0;
+    transform: translateX(0vw);
+    opacity: 0;
+    transition-property: transform, opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease; */
+
+/* 
+li:is(:focus) .subMenu {
+    transform: translateX(0vw);
+    opacity: 100%;
+  } */

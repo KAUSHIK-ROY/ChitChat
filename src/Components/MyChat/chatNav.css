@@ -40,7 +40,7 @@
     font-size: 20px;
     display: flex;
     gap: 2vw;
-    padding-right: 6vmin;
+    padding-right: 1vmin;
 
     .nav-btn{
         height: 40px;

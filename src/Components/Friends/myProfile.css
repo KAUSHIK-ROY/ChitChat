@@ -166,7 +166,7 @@ button{
       cursor: pointer;
       .idiv {
         display: flex;
-        margin-left: 2vw;
+        margin-left: 3vw;
         align-items: center;
         justify-content: center;
         width: 30px;

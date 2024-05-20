@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./myProfile.css";
 import AllChats from "./AllChats.jsx";
 import { auth } from "../../Items/Firebase.js";
-import dp from '../../Items/Man-dp.png'
+import dp from '../../Items/Man-dp.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -18,33 +18,49 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
 import NewChat from "./NewChat.jsx";
-import { useUserStore } from "../../Items/userStore.js";
 import { useChatStore } from "../../Items/chatStore.js";
+import SubMenu from "./MenuComponents/SubMenu.jsx";
 
 export default function MyProfile() {
-  const {user} = useChatStore();
+  const { user } = useChatStore();
   const [menu, setMenu] = useState(false);
-  let toggleMenu = () => {
+  const [subMenu, setSubMenu] = useState(null);
+
+  const toggleMenu = () => {
     setMenu(!menu);
   };
 
+  const toggleSubMenu = (index) => {
+    if (subMenu === index) {
+      setSubMenu(null);
+    } else {
+      setSubMenu(index);
+    }
+  };
+
   const [addChat, setAddChat] = useState(false);
-  let toggleAddChat = () => {
+  const toggleAddChat = () => {
     setAddChat(!addChat);
   };
-  // const {  resetChat } =
-  // useChatStore();
 
   const handleLogout = () => {
     auth.signOut();
     // resetChat();
   };
 
-  // const [chats, setChats] = useState([]);
-  // const [input, setInput] = useState("");
-  // const filteredChats = chats.filter((c) =>
-  //   c.user.username.toLowerCase().includes(input.toLowerCase())
-  // );
+  const subMenuRef = useRef();
+  useEffect(()=>{
+    let handler = (e)=>{
+      if( !subMenuRef.current.contains(e.target)){
+        setSubMenu(null);
+      }
+    }
+    document.addEventListener('mousedown', handler)
+
+    return()=>{
+      document.removeEventListener("mousedown", handler)
+    }
+  },[])
   return (
     <div className="friends">
       <div className="menulogo">
@@ -54,39 +70,40 @@ export default function MyProfile() {
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
           </div>
-          <div className="allList">
+          <div className="allList" ref={subMenuRef}>
+            {subMenu !== null && <SubMenu />}
             <ul>
-              <li>
+              <li onClick={() => toggleSubMenu(0)}>
                 <div className="idiv">
                   <img src={user?.avatar || dp} alt="" />
                 </div>
                 <div className="iname">My Profile </div>
               </li>
-              <li>
+              <li onClick={() => toggleSubMenu(1)}>
                 <div className="idiv">
                   <FontAwesomeIcon icon={faBell} />
                 </div>
                 <div className="iname">Notifications </div>
               </li>
-              <li>
+              <li onClick={() => toggleSubMenu(2)}>
                 <div className="idiv">
                   <FontAwesomeIcon icon={faPhotoVideo} />
                 </div>
                 <div className="iname">Images & videos</div>
               </li>
-              <li>
+              <li onClick={() => toggleSubMenu(3)}>
                 <div className="idiv">
                   <FontAwesomeIcon icon={faSdCard} />
                 </div>
                 <div className="iname">Storage </div>
               </li>
-              <li>
+              <li onClick={() => toggleSubMenu(4)}>
                 <div className="idiv">
                   <FontAwesomeIcon icon={faGear} />
                 </div>
                 <div className="iname">Settings </div>
               </li>
-              <li>
+              <li onClick={() => toggleSubMenu(5)}>
                 <div className="idiv">
                   <FontAwesomeIcon icon={faCircleInfo} />
                 </div>
@@ -119,21 +136,19 @@ export default function MyProfile() {
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
           <div className="micn">
-            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} className="all-btn1"/>
-            {addChat? (<NewChat/>) : ''}
-            <FontAwesomeIcon icon={faStar} className="all-btn1"/>
+            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} className="all-btn1" />
+            {addChat && <NewChat />}
+            <FontAwesomeIcon icon={faStar} className="all-btn1" />
           </div>
         </div>
         <div className="usearch">
           <button className="sbtn">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          {/* <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)}/> */}
-          <input type="text" placeholder="Search"/>
+          <input type="text" placeholder="Search" />
         </div>
         <div className="allchats">
-          {/* <AllChats filteredChats={filteredChats}/> */}
-          <AllChats/>
+          <AllChats />
         </div>
       </div>
     </div>
