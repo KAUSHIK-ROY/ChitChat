@@ -9,18 +9,42 @@
 
 }
 .myDp{
-    height: 170px;
-    width: 170px;
-    border-radius: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     overflow: hidden;
+
+    label{
+        background-color: aquamarine;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+
+        .editPic{
+            position: fixed;
+            background-color:#5183fe;
+            height: 35px;
+            width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            left: 33.5vw;
+            top: 150px;
+        }
+
+    }
+    input{
+        display: none;
+    }
 
 
     img{
         height: 175px;
         width: 175px;
+        border-radius: 50%;
         object-fit: cover;
     }
 }
