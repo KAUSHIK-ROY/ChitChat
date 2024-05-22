@@ -3,6 +3,8 @@ import './notifications.css'
 
 export default function Notifications() {
   return (
-    <div>Notifications</div>
+    <div>     
+      <h3>Coming Soon</h3>
+    </div>
   )
 }

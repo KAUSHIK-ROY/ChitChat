@@ -135,7 +135,7 @@ export default function NewChat() {
             <Loading />
           </>
         ) : (
-          <h3>No user found</h3>
+          <h2>No user found</h2>
         )}
       </div>
     </div>

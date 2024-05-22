@@ -17,12 +17,14 @@ export default function Profile() {
     url: "",
   });
 
-  const handleAvatar = (e) => {
+  const handleAvatar = async (e) => {
     if (e.target.files[0]) {
-      setAvatar({
+      const newAvatar = {
         file: e.target.files[0],
         url: URL.createObjectURL(e.target.files[0]),
-      });
+      };
+      setAvatar(newAvatar);
+      await uploadNewDp(newAvatar.file);
     }
   };
 
@@ -47,10 +49,10 @@ export default function Profile() {
     }
   };
 
-  const uploadNewDp = async () => {
-    if (avatar.file && currentUser?.id) {
+  const uploadNewDp = async (file) => {
+    if (file && currentUser?.id) {
       try {
-        const imgUrl = await upload(avatar.file);
+        const imgUrl = await upload(file);
         const userDocRef = doc(db, "users", currentUser.id);
         await updateDoc(userDocRef, { avatar: imgUrl });
         await fetchUserInfo(currentUser.id);
@@ -66,7 +68,7 @@ export default function Profile() {
       <div className="myDp">
         <label htmlFor="file">
           <img src={avatar.url || currentUser?.avatar || dp} alt="" />
-          <div className="editPic" onClick={uploadNewDp}>
+          <div className="editPic">
             <FontAwesomeIcon icon={faPencil} />
           </div>
         </label>

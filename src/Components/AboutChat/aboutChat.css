@@ -12,6 +12,7 @@
     margin-top: 20px;
     height: 170px;
     width: 170px;
+    border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
     margin-bottom: 20px;

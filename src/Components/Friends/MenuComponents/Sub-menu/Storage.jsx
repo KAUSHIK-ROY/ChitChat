@@ -3,6 +3,8 @@ import './storage.css'
 
 export default function Storage() {
   return (
-    <div>Storage</div>
+    <div>     
+      <h3>Coming Soon</h3>
+    </div>
   )
 }

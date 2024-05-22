@@ -70,8 +70,9 @@
       border: none;
       cursor: pointer;
     }
-    h3{
+    h2{
       color: rgba(255, 255, 255, 0.138);
+      font-size: 22px;
     }
   }
 

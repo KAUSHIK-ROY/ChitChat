@@ -3,6 +3,8 @@ import './about_us.css'
 
 export default function About_us() {
   return (
-    <div>About_us</div>
+    <div>     
+      <h3>Coming Soon</h3>
+    </div>
   )
 }

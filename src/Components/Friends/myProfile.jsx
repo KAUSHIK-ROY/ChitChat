@@ -20,11 +20,14 @@ import { faBell, faStar } from "@fortawesome/free-regular-svg-icons";
 import NewChat from "./NewChat.jsx";
 import { useChatStore } from "../../Items/chatStore.js";
 import SubMenu from "./MenuComponents/SubMenu.jsx";
+import { useUserStore } from "../../Items/userStore.js";
 
 export default function MyProfile() {
   const { user } = useChatStore();
   const [menu, setMenu] = useState(false);
   const [subMenu, setSubMenu] = useState(null);
+  const { currentUser } = useUserStore();
+
 
   // const [myProfile,setMyProfile] = useState(false);
 
@@ -83,7 +86,7 @@ export default function MyProfile() {
             <ul>
               <li onClick={() => toggleSubMenu(0)} >
                 <div className="idiv">
-                  <img src={user?.avatar || dp} alt="" />
+                  <img src={currentUser?.avatar || dp} alt="" />
                 </div>
                 <div className="iname">My Profile </div>
               </li>

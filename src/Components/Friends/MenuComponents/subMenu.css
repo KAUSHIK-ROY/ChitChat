@@ -8,7 +8,16 @@
     border: 1px solid rgb(90, 90, 90);
     border-top: none;
 
+}
 
+h3{
+  color: rgba(255, 255, 255, 0.323);
+  font-size: 30px;
+  height:64vh;
+    width: 23vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

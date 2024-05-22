@@ -174,9 +174,12 @@ button{
         font-size: 20px;
         overflow: hidden;
 
-          img{
-            height: 30px;
-            width: 30px;
+        img{
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+          overflow: hidden;
 
         }
       }
