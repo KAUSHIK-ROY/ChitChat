@@ -4,10 +4,15 @@ import "./message.css";
 import ChatNav from "./ChatNav.jsx";
 import { useUserStore } from "../../Items/userStore.js";
 import { useChatStore } from "../../Items/chatStore.js";
-import {arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  getDoc,
+  onSnapshot,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../Items/Firebase.js";
 // import { format } from "timeago.js";
-
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,16 +23,7 @@ import {
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import EmojiPicker from "emoji-picker-react";
 
-
-
-
-
-
-
-
-
-export default function Messages({ aboutChat, toggleAbout}) {
-
+export default function Messages({ aboutChat, toggleAbout }) {
   let [open, setOpen] = useState(false);
   const [img, setImg] = useState({
     file: null,
@@ -38,8 +34,6 @@ export default function Messages({ aboutChat, toggleAbout}) {
   const { currentUser } = useUserStore();
   const endRef = useRef(null);
   const [chat, setChat] = useState();
-
-
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -130,22 +124,29 @@ export default function Messages({ aboutChat, toggleAbout}) {
     };
   }, []);
 
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    textarea.style.height = "auto";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
+  }, [text]);
+
   return (
     <div>
       <div className="msg">
         <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat} />
         <div className="personalchat ">
-
           {chat?.messages?.map((message) => (
             // <div className="message">
             <div
-            className={
-              message.senderId === currentUser?.id ? "message own" : "message"
-            }
-            key={message?.createAt}
-          >
+              className={
+                message.senderId === currentUser?.id ? "message own" : "message"
+              }
+              key={message?.createAt}
+            >
               <div className="text">
-              {/* {message.img && <img src={message.img} alt="" />} */}
+                {/* {message.img && <img src={message.img} alt="" />} */}
                 <p>{message.text}</p>
                 {/* <span>{format(message.createdAt.toDate())}</span> */}
               </div>
@@ -165,37 +166,41 @@ export default function Messages({ aboutChat, toggleAbout}) {
         </div>
 
         <div className="tdetails">
-        <div className="tinp" ref={emojiRef}>
-          <FontAwesomeIcon
-            icon={faFaceSmile}
-            className="ticon"
-            onClick={() => setOpen((prev) => !prev)}
-          />
-          <div className="picker">
-            <EmojiPicker open={open} theme="dark" onEmojiClick={handleEmoji} />
+          <div className="tinp" ref={emojiRef}>
+            <div className="icn-div"><FontAwesomeIcon
+              icon={faFaceSmile}
+              className="ticon"
+              onClick={() => setOpen((prev) => !prev)}
+            /></div>
+            <div className="picker">
+              <EmojiPicker
+                open={open}
+                theme="dark"
+                onEmojiClick={handleEmoji}
+              />
+            </div>
+            <textarea
+              placeholder="Type a message..."
+              className="inpMsg"
+              ref={textareaRef}
+              rows="1"
+              value={text}
+              onChange={updateData}
+              onClick={() => setOpen(false)}
+            ></textarea>
+            <div className="micclip">
+            <div className="icn-div"><FontAwesomeIcon icon={faMicrophone} /></div>
+            <div className="icn-div"><FontAwesomeIcon icon={faPaperclip} /></div>
+            </div>
+            {/* <FontAwesomeIcon icon={faCamera}/> */}
           </div>
-          <textarea
-            placeholder="Type a message..."
-            className="inpMsg"
-            rows="1"
-            value={text}
-            onChange={updateData}
-            onClick={() => setOpen(false)}
-          ></textarea>
-          <div className="micclip">
-            <FontAwesomeIcon icon={faMicrophone} />
-            <FontAwesomeIcon icon={faPaperclip} />
+
+          <div className="send">
+            <button type="submit" onClick={handleSendMessage}>
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </button>
           </div>
-          {/* <FontAwesomeIcon icon={faCamera}/> */}
         </div>
-
-        <div className="send">
-          <button type="submit" onClick={handleSendMessage}>
-            <FontAwesomeIcon icon={faPaperPlane} />
-          </button>
-        </div>
-      </div>
-
       </div>
     </div>
   );

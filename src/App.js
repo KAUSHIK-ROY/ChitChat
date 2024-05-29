@@ -39,22 +39,28 @@ function App() {
 
   return (
     <div className="container">
-      
       {currentUser ? (
         <>
           <div className="friends">
             <MyProfile />
           </div>
-          {chatId && (<>
-          <div className={`myChat ${aboutChat ? "active" : ""}`}>
-            <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
-          </div>
-          {/* {aboutChat && ( */}
-          <div className={`aboutChat ${aboutChat ? "active" : ""}`}>
-            <AboutChat toggleAbout={toggleAbout} />
-            {/* )} */}
-          </div>
-          </>)}
+          {chatId ? (
+            <>
+              <div className={`myChat ${aboutChat ? "active" : ""}`}>
+                <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
+              </div>
+              {/* {aboutChat && ( */}
+              <div className={`aboutChat ${aboutChat ? "active" : ""}`}>
+                <AboutChat toggleAbout={toggleAbout} />
+                {/* )} */}
+              </div>
+            </>
+          ) : (
+            <div className="nothing">
+              <h1>Welcome to <span>CHITCHAT</span> </h1>
+              <p>Send and receive messages without keeping your phone online.</p>
+            </div>
+          )}
         </>
       ) : (
         <Login />
@@ -64,7 +70,3 @@ function App() {
 }
 
 export default App;
-
-
-
-

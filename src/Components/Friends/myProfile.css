@@ -15,7 +15,7 @@ button{
   padding-left: 2.7vmin;
   background-color: rgb(21, 21, 21);
   border-bottom: 0.5px solid rgb(56, 56, 56);
-
+  border-right: 0.5px solid rgb(56, 56, 56);
 }
 
 .all-btn {
@@ -206,7 +206,8 @@ button{
   flex-direction: column;
   padding-top: 20px;
   background-color: rgb(21, 21, 21);
-  /* border: 1px solid white; */
+  border-right: 0.5px solid rgb(56, 56, 56);
+
 }
 .dpicon {
   height: 90%;

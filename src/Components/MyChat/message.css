@@ -26,16 +26,16 @@
    /* border: 1px solid rgb(255, 255, 255); */
    padding: 20px 50px;
    flex: 1;
+   /* overflow-x: hidden; */
    overflow: scroll;
    display: flex;
    flex-direction: column;
    gap: 20px;
 
    .message{
-      max-width: 70%;
       display: flex;
       gap: 20px;
-
+      max-width: 70%;
 
       &.own{
          align-self: flex-end;
@@ -45,6 +45,9 @@
                background-color: #5183fe;
                border-radius: 20px 0 20px 20px;
                align-self: flex-end;
+               max-width: 88vmin; 
+               word-wrap: break-word;
+               overflow-wrap: break-word;
             }
 
             span{
@@ -64,6 +67,9 @@
             border-radius: 0 20px 20px 20px;
             background-color: #33487d70;
             align-self: flex-start;
+            max-width: 89vmin; 
+            word-wrap: break-word;
+            overflow-wrap: break-word;
             
          }
 
@@ -105,7 +111,7 @@
    display: flex;
    align-items: center;
    /* justify-content:center; */
-   background-color: rgb(18, 18, 18);
+   background-color: rgb(21, 21, 21);
    margin-right: 10px;
    border-radius: 15px 15px 0 15px;
    padding-right:15px ;
@@ -131,12 +137,12 @@
    outline: none;
    padding-left: 20px;
    padding-right: 15px;
-   border-left: 1px solid rgb(135, 135, 135);
    resize: none; 
    display: flex;
    align-items: center;
    justify-content: center;
    font-size: 16px;
+   overflow-y: auto;
   
 }
 
@@ -145,7 +151,8 @@
 }
 
 .ticon{
-   padding-left: 20px;
+   padding-left: 30px;
    padding-right: 20px;
    font-size: 20px;
+   border-right: 1px solid rgb(135, 135, 135);
 }

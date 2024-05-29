@@ -10,6 +10,7 @@ body{
 }
 .container{
     display: flex;
+    color: white;
     align-items: center;
     height: 100vh;
     width: 100vw;
@@ -60,4 +61,30 @@ body{
 .aboutChat.active{
     transform: translateX(0vw);
     transition: transform 0.3s ease-in-out;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+
+.nothing{
+    margin-left: 25vw;
+    height: 100px;
+    width: 75vw;
+    color: white;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    h1{
+        font-size: 32px;
+        font-weight: 700;
+
+        span{
+            color: #5485ff;
+            font-family: "Poetsen One", sans-serif;
+        }
+    }
 }
