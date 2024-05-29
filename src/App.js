@@ -39,6 +39,7 @@ function App() {
 
   return (
     <div className="container">
+      
       {currentUser ? (
         <>
           <div className="friends">

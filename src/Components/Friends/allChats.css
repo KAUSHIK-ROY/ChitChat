@@ -25,4 +25,9 @@
 }
 .shortdetail{
     padding-left:10px;
+
+    p{
+        width: 14vw;
+        overflow: hidden;
+    }
 }
