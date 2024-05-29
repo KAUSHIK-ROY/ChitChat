@@ -99,7 +99,7 @@ export default function Login() {
                   <FontAwesomeIcon icon={faUser} className="icn" />
                 </div>
                 <div className="input-box">
-                  <input type="email" required name="email" />
+                  <input type="mail" required name="email" />
                   <label htmlFor="">Email</label>
                   <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>
@@ -152,7 +152,7 @@ export default function Login() {
               <form onSubmit={handleLogin} autoComplete="off">
                 <div className="input-box" style={{ display: "none" }}></div>
                 <div className="input-box">
-                  <input type="email" required name="email" />
+                  <input type="mail" required name="email" />
                   <label htmlFor="">Email Id</label>
                   <FontAwesomeIcon icon={faEnvelope} className="icn" />
                 </div>

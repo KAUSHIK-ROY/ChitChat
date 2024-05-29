@@ -9,8 +9,6 @@ import { useUserStore } from "./Items/userStore.js";
 import Loading from "./Items/Loading.jsx";
 import AboutChat from "./Components/AboutChat/AboutChat.jsx";
 import { useChatStore } from "./Items/chatStore.js";
-// import ChatNav from "./Components/MyChat/ChatNav.jsx";
-
 
 function App() {
   const [aboutChat, setAboutChat] = useState(false);
@@ -38,7 +36,7 @@ function App() {
         <Loading />
       </div>
     );
- 
+
   return (
     <div className="container">
       {currentUser ? (
@@ -46,14 +44,16 @@ function App() {
           <div className="friends">
             <MyProfile />
           </div>
-          <div className={`myChat ${aboutChat ? 'active':''}`}>
+          {chatId && (<>
+          <div className={`myChat ${aboutChat ? "active" : ""}`}>
             <Messages toggleAbout={toggleAbout} showAbout={aboutChat} />
           </div>
-            {/* {aboutChat && ( */}
-              <div className={`aboutChat ${aboutChat ? 'active': ''}`}>
-                <AboutChat toggleAbout={toggleAbout}/>
+          {/* {aboutChat && ( */}
+          <div className={`aboutChat ${aboutChat ? "active" : ""}`}>
+            <AboutChat toggleAbout={toggleAbout} />
             {/* )} */}
           </div>
+          </>)}
         </>
       ) : (
         <Login />
@@ -63,3 +63,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
