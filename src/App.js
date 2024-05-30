@@ -57,7 +57,7 @@ function App() {
             </>
           ) : (
             <div className="nothing">
-              <h1>Welcome to <span>CHITCHAT</span> </h1>
+              <h1>Welcome to <span>ChitChat</span> </h1>
               <p>Send and receive messages without keeping your phone online.</p>
             </div>
           )}

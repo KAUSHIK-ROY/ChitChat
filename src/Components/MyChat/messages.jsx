@@ -12,7 +12,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../Items/Firebase.js";
-// import { format } from "timeago.js";
+import { format } from "timeago.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -141,14 +141,14 @@ export default function Messages({ aboutChat, toggleAbout }) {
             // <div className="message">
             <div
               className={
-                message.senderId === currentUser?.id ? "message own" : "message"
+                message.senderId === currentUser?.id ? "message own" : "message frnd"
               }
               key={message?.createAt}
             >
               <div className="text">
                 {/* {message.img && <img src={message.img} alt="" />} */}
                 <p>{message.text}</p>
-                {/* <span>{format(message.createdAt.toDate())}</span> */}
+                <span>{format(message.createdAt.toDate())}</span>
               </div>
             </div>
           ))}
@@ -167,11 +167,11 @@ export default function Messages({ aboutChat, toggleAbout }) {
 
         <div className="tdetails">
           <div className="tinp" ref={emojiRef}>
-            <div className="icn-div"><FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faFaceSmile}
               className="ticon"
-              onClick={() => setOpen((prev) => !prev)}
-            /></div>
+              onClick={() => setOpen((prev) => !prev)} 
+            />
             <div className="picker">
               <EmojiPicker
                 open={open}
@@ -179,6 +179,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
                 onEmojiClick={handleEmoji}
               />
             </div>
+            <p>|</p>
             <textarea
               placeholder="Type a message..."
               className="inpMsg"
@@ -189,8 +190,8 @@ export default function Messages({ aboutChat, toggleAbout }) {
               onClick={() => setOpen(false)}
             ></textarea>
             <div className="micclip">
-            <div className="icn-div"><FontAwesomeIcon icon={faMicrophone} /></div>
-            <div className="icn-div"><FontAwesomeIcon icon={faPaperclip} /></div>
+              <FontAwesomeIcon icon={faMicrophone} />
+              <FontAwesomeIcon icon={faPaperclip} />
             </div>
             {/* <FontAwesomeIcon icon={faCamera}/> */}
           </div>

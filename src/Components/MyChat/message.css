@@ -1,158 +1,195 @@
-.msg{
-   width: 75vw;
-    background-color: rgb(35, 35, 35);
-    color: white;
-    height: 100vh;
+.msg {
+  width: 75vw;
+  background-color: rgb(35, 35, 35);
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.3s ease-in-out;
+  /* border: 1px solid white; */
+  /* margin-left: 25vw; */
+}
+
+::-webkit-scrollbar {
+  scrollbar-width: none;
+}
+
+.personalchat {
+  height: 81vh;
+  width: 91%;
+  /* border: 1px solid rgb(255, 255, 255); */
+  padding: 20px 50px;
+  flex: 1;
+  /* overflow-x: hidden; */
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .message {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: width 0.3s ease-in-out;
-    /* border: 1px solid white; */
-   /* margin-left: 25vw; */
+    gap: 20px;
+    max-width: 70%;
 
-}
+    &.own {
+      align-self: flex-end;
 
-
-
-
-::-webkit-scrollbar{
-   scrollbar-width: none;
-}
-
-.personalchat{
-   height: 81vh;
-   width: 91%;
-   /* border: 1px solid rgb(255, 255, 255); */
-   padding: 20px 50px;
-   flex: 1;
-   /* overflow-x: hidden; */
-   overflow: scroll;
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
-
-   .message{
-      display: flex;
-      gap: 20px;
-      max-width: 70%;
-
-      &.own{
-         align-self: flex-end;
-         
-         .text{
-            p{
-               background-color: #5183fe;
-               border-radius: 20px 0 20px 20px;
-               align-self: flex-end;
-               max-width: 88vmin; 
-               word-wrap: break-word;
-               overflow-wrap: break-word;
-            }
-
-            span{
-               font-size: 13px;
-               align-self: flex-end
-            };
-         }
-      }
-      .text{
+      .text {
          flex: 1;
          display: flex;
          flex-direction: column;
          gap: 5px;
-         
-         p{
-            padding: 20px;
-            border-radius: 0 20px 20px 20px;
-            background-color: #33487d70;
-            align-self: flex-start;
-            max-width: 89vmin; 
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            
-         }
 
-         span{
-            font-size: 13px;
-         };
+
+        p {
+          padding: 20px;
+          background-color: #5183fe;
+          border-radius: 20px 0 20px 20px;
+          align-self: flex-end;
+          max-width: 88vmin;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          position: relative;
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(
+              135deg,
+              #5183fe 0%,
+              #5183fe 50%,
+              transparent 50%,
+              transparent
+            );
+          }
+        }
+
+        span {
+          font-size: 13px;
+          align-self: flex-end;
+        }
       }
-   }
+    }
+
+    &.frnd {
+      .text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        p {
+          padding: 20px;
+          border-radius: 0 20px 20px 20px;
+          /* background-color: #33487d70; */
+          background-color: #678ada2d;
+
+          align-self: flex-start;
+          max-width: 88vmin;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          position: relative;
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(
+              225deg,
+              #678ada2d 0%,
+              #678ada2d 50%,
+              transparent 50%,
+              transparent
+            );
+          }
+        }
+      }
+
+      span {
+        font-size: 13px;
+      }
+    }
+  }
 }
 
-
-
-
-.tdetails{
-   width:70%;
-   /* height: 150px; */
-   display: flex;
-   align-items: end;
-   justify-content: space-between;
-   margin-bottom: 30px;
-   /* z-index: 1; */
+.tdetails {
+  width: 70%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.send button{
-   height: 50px;
-   width: 50px;
-   border-radius: 50%;
-   border: none;
-   font-size: 30px;
-   color: #5183fe;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.send button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px;
+  color: #5183fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tinp{
-   min-height: 50px;
-   width: 100%;
-   display: flex;
-   align-items: center;
-   /* justify-content:center; */
-   background-color: rgb(21, 21, 21);
-   margin-right: 10px;
-   border-radius: 15px 15px 0 15px;
-   padding-right:15px ;
-   position: relative;
+.tinp {
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  /* justify-content:center; */
+  background-color: rgb(21, 21, 21);
+  margin-right: 10px;
+  border-radius: 15px 15px 0 15px;
+  padding-right: 15px;
+  position: relative;
 
-   .picker{
-       position: absolute;
-       bottom: 50px;
-   }
+  .picker {
+    position: absolute;
+    bottom: 50px;
+  }
+  p {
+    padding-bottom: 15px;
+    color: rgb(135, 135, 135);
+    font-weight: 50;
+  }
 }
 
-.micclip{
-   display: flex;
-   gap:30px ;
-   padding-right: 10px;
+.micclip {
+  display: flex;
+  gap: 30px;
+  padding: 0 10px 15px;
 }
-.inpMsg{
-   flex: 1;
-   border: none;
-   max-height: 150px;
-   background-color: transparent;
-   color:white;
-   outline: none;
-   padding-left: 20px;
-   padding-right: 15px;
-   resize: none; 
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   font-size: 16px;
-   overflow-y: auto;
-  
+.inpMsg {
+  flex: 1;
+  border: none;
+  max-height: 150px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  padding: 15px 15px 0px 20px;
+  resize: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  overflow-y: auto;
 }
 
-.inpMsg::placeholder{
-   color: rgb(135, 135, 135);
+.inpMsg::placeholder {
+  color: rgb(135, 135, 135);
 }
 
-.ticon{
-   padding-left: 30px;
-   padding-right: 20px;
-   font-size: 20px;
-   border-right: 1px solid rgb(135, 135, 135);
+.ticon {
+  padding: 15px 20px 15px 30px;
+  font-size: 20px;
 }
