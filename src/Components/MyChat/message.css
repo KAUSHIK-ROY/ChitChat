@@ -1,6 +1,9 @@
 .msg {
   width: 75vw;
   background-color: rgb(35, 35, 35);
+  background-image: url(../../Items/yourname1.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
   color: white;
   height: 100vh;
   display: flex;
@@ -87,8 +90,9 @@
         p {
           padding: 20px;
           border-radius: 0 20px 20px 20px;
-          /* background-color: #33487d70; */
-          background-color: #678ada2d;
+          background-color: #33487d70;
+          /* background-color: #6789da66; */
+          backdrop-filter: blur(3px);
 
           align-self: flex-start;
           max-width: 88vmin;
@@ -105,11 +109,12 @@
             height: 10px;
             background: linear-gradient(
               225deg,
-              #678ada2d 0%,
-              #678ada2d 50%,
+              #33487d70 0%,
+              #33487d70 50%,
               transparent 50%,
               transparent
             );
+            backdrop-filter: blur(3px);
           }
         }
       }

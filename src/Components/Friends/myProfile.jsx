@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./myProfile.css";
 import AllChats from "./AllChats.jsx";
-import { auth } from "../../Items/Firebase.js";
-import dp from '../../Items/Man-dp.png';
+import { auth, db } from "../../Items/Firebase.js";
+import dp from "../../Items/Man-dp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -21,16 +21,15 @@ import NewChat from "./NewChat.jsx";
 import { useChatStore } from "../../Items/chatStore.js";
 import SubMenu from "./MenuComponents/SubMenu.jsx";
 import { useUserStore } from "../../Items/userStore.js";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function MyProfile() {
-  const { user } = useChatStore();
+  const { resetChat } = useChatStore();
   const [menu, setMenu] = useState(false);
   const [subMenu, setSubMenu] = useState(null);
   const { currentUser } = useUserStore();
-
-
+  const [input, setInput] = useState("");
   // const [myProfile,setMyProfile] = useState(false);
-
 
   const toggleMenu = () => {
     setMenu(!menu);
@@ -41,7 +40,6 @@ export default function MyProfile() {
       setSubMenu(null);
     } else {
       setSubMenu(index);
-
     }
   };
 
@@ -50,28 +48,42 @@ export default function MyProfile() {
     setAddChat(!addChat);
   };
 
-  const handleLogout = () => {
-    auth.signOut();
-    // resetChat();
+  const handleLogout = async () => {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        await setDoc(
+          doc(db, "users", user.uid),
+          {
+            online: false,
+          },
+          { merge: true }
+        );
+        await auth.signOut();
+      }
+    } catch (err) {
+      // toast.error(err.message);
+    }
+    resetChat();
   };
 
   const subMenuRef = useRef();
   const addChatRef = useRef();
-  useEffect(()=>{
-    let handler = (e)=>{
-      if( !subMenuRef.current.contains(e.target)){
+  useEffect(() => {
+    let handler = (e) => {
+      if (!subMenuRef.current.contains(e.target)) {
         setSubMenu(null);
       }
-      if( !addChatRef.current.contains(e.target)){
+      if (!addChatRef.current.contains(e.target)) {
         setAddChat(false);
       }
-    }
-    document.addEventListener('mousedown', handler)
+    };
+    document.addEventListener("mousedown", handler);
 
-    return()=>{
-      document.removeEventListener("mousedown", handler)
-    }
-  },[])
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []);
   return (
     <div className="friends">
       <div className="menulogo">
@@ -82,9 +94,9 @@ export default function MyProfile() {
             </button>
           </div>
           <div className="allList" ref={subMenuRef}>
-            {subMenu !== null && <SubMenu subMenu={subMenu}/>}
+            {subMenu !== null && <SubMenu subMenu={subMenu} />}
             <ul>
-              <li onClick={() => toggleSubMenu(0)} >
+              <li onClick={() => toggleSubMenu(0)}>
                 <div className="idiv">
                   <img src={currentUser?.avatar || dp} alt="" />
                 </div>
@@ -146,8 +158,12 @@ export default function MyProfile() {
             <h2>Messages</h2>
             <FontAwesomeIcon icon={faChevronDown} className="downarrow" />
           </div>
-          <div className="micn" ref={addChatRef} >
-            <FontAwesomeIcon icon={faPenToSquare} onClick={toggleAddChat} className="all-btn1" />
+          <div className="micn" ref={addChatRef}>
+            <FontAwesomeIcon
+              icon={faPenToSquare}
+              onClick={toggleAddChat}
+              className="all-btn1"
+            />
             {addChat && <NewChat />}
             <FontAwesomeIcon icon={faStar} className="all-btn1" />
           </div>
@@ -156,10 +172,10 @@ export default function MyProfile() {
           <button className="sbtn">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)}/>
         </div>
         <div className="allchats">
-          <AllChats />
+          <AllChats input={input}/>
         </div>
       </div>
     </div>

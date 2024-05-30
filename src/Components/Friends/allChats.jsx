@@ -9,11 +9,11 @@ import dp from '../../Items/Man-dp.png'
 import { useChatStore } from '../../Items/chatStore';
 
 
-export default function AllChats() {
+export default function AllChats({input}) {
   
   const [chats, setChats] = useState([]);
   const { currentUser } = useUserStore();
-  const { chatId, changeChat } = useChatStore();
+  const {  changeChat } = useChatStore();
 
   
   useEffect(() => {
@@ -65,16 +65,16 @@ export default function AllChats() {
       console.log(err);
     }
   };
-  // const filteredChats = chats.filter((c) =>
-  //   c.user.userName.toLowerCase().includes(inputs.toLowerCase())
-  // );
+  const filteredChats = chats.filter((c) =>
+    c.user.userName.toLowerCase().includes(input.toLowerCase())
+  );
   
 
   return (
     <div>
-      {chats.map((chat) =>(                      /*filteredChat*/
+      {filteredChats.map((chat) =>(                     
       <div className="allUsers" key={chat.chatId} onClick={()=>handleSelect(chat)} 
-      // style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",}}
+      style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",}}
         >
         <img src={ chat.user.blocked.includes(currentUser.id)
                 ? dp

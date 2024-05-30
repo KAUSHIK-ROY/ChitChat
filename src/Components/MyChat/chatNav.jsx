@@ -12,6 +12,7 @@ import { useChatStore } from "../../Items/chatStore.js";
 export default function ChatNav({ aboutChat, toggleAbout }) {
   const { user } = useChatStore();
 
+
   return (
     <>
       <div className="user">
@@ -27,7 +28,7 @@ export default function ChatNav({ aboutChat, toggleAbout }) {
           </div>
           <div className="uname">
             <h4>{user?.userName}</h4>
-            <p>Online</p>
+            <p>{user?.online ? (<span>Online</span>) : 'Offline'}</p>
           </div>
         </div>
         <div className="socialIcons">

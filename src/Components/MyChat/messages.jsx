@@ -12,7 +12,10 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../Items/Firebase.js";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
+import TimeAgo from 'react-timeago'
+import frenchStrings from 'react-timeago/lib/language-strings/fr'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -34,6 +37,13 @@ export default function Messages({ aboutChat, toggleAbout }) {
   const { currentUser } = useUserStore();
   const endRef = useRef(null);
   const [chat, setChat] = useState();
+  // const formatter = buildFormatter()
+  const formatter = (value, unit, suffix, epochSeconds, nextFormatter) => {
+    if (unit === 'second') {
+      return 'just now';
+    }
+    return nextFormatter(value, unit, suffix, epochSeconds, nextFormatter);
+  };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -148,7 +158,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
               <div className="text">
                 {/* {message.img && <img src={message.img} alt="" />} */}
                 <p>{message.text}</p>
-                <span>{format(message.createdAt.toDate())}</span>
+                <span><TimeAgo date={message.createdAt.toDate()} /></span>
               </div>
             </div>
           ))}
