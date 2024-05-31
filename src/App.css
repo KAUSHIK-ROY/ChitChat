@@ -66,18 +66,33 @@ body{
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 
-.nothing{
+.welcome-page{
     margin-left: 25vw;
-    height: 100px;
     width: 75vw;
     color: white;
-    background-color: transparent;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     flex-direction: column;
-    gap: 10px;
+
+    img{
+        margin-bottom: 70px;
+    }
+
+
+}
+
+.welcome-text{
+    margin-bottom: 15vmin;
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    
     h1{
         font-size: 32px;
         font-weight: 700;
