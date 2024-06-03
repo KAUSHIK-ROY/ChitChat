@@ -13,7 +13,6 @@ import Robot from './Items/robot.gif'
 
 function App() {
   const [aboutChat, setAboutChat] = useState(false);
-
   const toggleAbout = () => {
     setAboutChat(!aboutChat);
     // console.log("Working");
