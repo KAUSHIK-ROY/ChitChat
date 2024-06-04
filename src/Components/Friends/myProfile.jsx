@@ -176,6 +176,10 @@ export default function MyProfile() {
         </div>
         <div className="allchats">
           <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
         </div>
       </div>
     </div>
