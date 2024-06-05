@@ -72,7 +72,7 @@
   border-radius: 10px;
   background-color: #3498db;
   box-sizing: border-box;
-  border: 0.5px solid rgba(255, 255, 255, 0.244);
+  /* border: 0.5px solid rgba(255, 255, 255, 0.244); */
   display: flex;
   flex: 0 0 auto;
   align-items: center;

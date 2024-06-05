@@ -86,7 +86,19 @@
 
   @media (width < 430px) {
     .newChat{
-      top: 25vw;
-      left: auto;
+      bottom: 0;
+      top: 27vw;
+      left: 0;
+      right: 0;
+      background-color: rgba(21, 21, 21, 0.788);
+      padding: 10vmin;
+
+      input{
+        width:58vw;
+
+      }
+      .nuser{
+        width:79vw;
+      }
     }
   }

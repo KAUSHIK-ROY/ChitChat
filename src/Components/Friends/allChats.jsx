@@ -73,8 +73,7 @@ export default function AllChats({input}) {
   return (
     <div>
       {filteredChats.map((chat) =>(                     
-      <div className="allUsers" key={chat.chatId} onClick={()=>handleSelect(chat)} 
-      style={{backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",}}
+      <div className={`allUsers ${chat?.isSeen ? '' : 'unseen'}`} key={chat.chatId} onClick={()=>handleSelect(chat)} 
         >
         <img src={ chat.user.blocked.includes(currentUser.id)
                 ? dp

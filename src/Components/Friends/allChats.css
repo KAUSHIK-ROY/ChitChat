@@ -9,6 +9,7 @@
     border-radius: 0.7rem;
     border: none;
     overflow: hidden;
+    margin-bottom: 0.5vh;
 
     img{
         height: 50px;
@@ -17,6 +18,10 @@
         object-fit: cover;
         overflow: hidden;
     }
+
+    &.unseen {
+        background-color: #5183fe;
+      }
 }
 
 .allUsers:hover{
@@ -28,6 +33,13 @@
 
     p{
         width: 14vw;
-        overflow: hidden;
+        overflow: hidden; 
+    }
+}
+
+
+@media (width < 430px) {
+    .allUsers{
+        width: 86vw;
     }
 }

@@ -246,13 +246,11 @@ button{
   color: rgb(135, 135, 135);
 }
 .im {
-  width: 100%;
+  width: 21.5vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 7vmin;
   margin-bottom: 10px;
-  /* border: 1px solid white; */
 }
 .msgarr {
   display: flex;
@@ -262,7 +260,6 @@ button{
 .micn {
   display: flex;
   gap: 2.5vmin;
-  padding-right: 7vmin;
 }
 
 .downarrow {
@@ -271,7 +268,6 @@ button{
 }
 
 .allchats {
-  /* height: 83%; */
   width: 100%;
   height: 74.7vh;
   overflow: hidden;
@@ -304,6 +300,7 @@ button{
 @media (width < 430px) {
   .menulogo{
     height: 6.5vh;
+    border-right: none;
     .btn{
       left: 20vw;
     }
@@ -347,10 +344,14 @@ button{
     height: 50px;
     width: 78.26vw;
   }
+  .im{
+    width: 86vw;
+  }
 
   .mychats{
     height: 93.5vh;
     padding-top: 1vh;
+    border-right: none;
   }
 
   .usearch{
