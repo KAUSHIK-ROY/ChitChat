@@ -65,6 +65,7 @@ export default function Profile() {
 
   return (
     <div className="profile">
+      <h2>My Profile</h2>
       <div className="myDp">
         <label htmlFor="file">
           <img src={avatar.url || currentUser?.avatar || dp} alt="" />
@@ -76,10 +77,10 @@ export default function Profile() {
       </div>
       <div className="edit">
         {editName ? (
-          <h2>{currentUser?.userName}</h2>
+          <h4 className="pName">{currentUser?.userName}</h4>
         ) : (
           <div className="inp-btn">
-            <input type="text" value={userName} onChange={handleChange} />
+            <input type="text" value={userName} onChange={handleChange} placeholder="Name"/>
             <button type="submit" onClick={saveNewUserName}>
               save
             </button>

@@ -94,7 +94,7 @@ export default function MyProfile() {
             </button>
           </div>
           <div className="allList" ref={subMenuRef}>
-            {subMenu !== null && <SubMenu subMenu={subMenu} />}
+            {subMenu !== null && <SubMenu subMenu={subMenu} setSubMenu={setSubMenu}/>}
             <ul>
               <li onClick={() => toggleSubMenu(0)}>
                 <div className="idiv">

@@ -8,6 +8,21 @@
     border: 1px solid rgb(90, 90, 90);
     border-top: none;
 
+    .all-btn{
+      margin: 5vmin;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      background-color: transparent;
+      font-size: larger;
+      display: none;
+    }
+
 }
 
 h3{
@@ -21,7 +36,20 @@ h3{
 }
 
 
+@media (width < 430px){
+  .subMenu{
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: pink; */
+    z-index: 2;
 
+    .all-btn{
+      display: block;
+      position: absolute;
+    }
+  }
+}
 
 
 

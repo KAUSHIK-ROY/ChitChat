@@ -6,10 +6,13 @@ import Images_videos from "./Sub-menu/Images_videos.jsx";
 import Storage from "./Sub-menu/Storage.jsx";
 import Settings from "./Sub-menu/Settings.jsx";
 import About_us from "./Sub-menu/About_us.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-export default function SubMenu({ subMenu }) {
+export default function SubMenu({ subMenu,setSubMenu }) {
   return (
     <div className='subMenu'>
+      <button className="all-btn" onClick={() => setSubMenu(null)}><FontAwesomeIcon icon={faArrowLeft} /></button>
       {subMenu === 0 && <Profile />}
       {subMenu === 1 && <Notifications />}
       {subMenu === 2 && <Images_videos />}

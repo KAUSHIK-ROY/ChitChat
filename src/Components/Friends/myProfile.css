@@ -347,6 +347,9 @@ button{
   .im{
     width: 86vw;
   }
+  .micn{
+    gap: 7vw;
+  }
 
   .mychats{
     height: 93.5vh;

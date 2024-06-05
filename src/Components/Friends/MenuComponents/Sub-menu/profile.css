@@ -4,7 +4,10 @@
     padding: 25px;
     display: flex;
     flex-direction: column;
-    /* background-color: bisque; */
+
+    h2{
+        margin-bottom: 2vh;
+    }
 
 }
 .myDp{
@@ -29,7 +32,7 @@
             justify-content: center;
             border-radius: 50%;
             left: 33.5vw;
-            top: 150px;
+            top: 25vh;
         }
 
     }
@@ -51,8 +54,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
+    .pName{
+        font-size: 25px;
+    }
     button{
         height: 35px;
         width: 35px;
@@ -90,4 +94,35 @@
         }
     }
     
+}
+
+@media (width < 430px) {
+    .profile{
+        padding-top: 5vmin;
+
+        h2{
+            margin: 0 0 5vh 10vw;
+        }
+    }
+    .myDp{
+        justify-content: center;
+        label{
+            .editPic{
+                top:25vh;
+                left: 60vw;
+            }
+        }
+    }
+    .edit{
+        margin: 3vh 4vw 0 4vw;
+
+        button{
+            background-color: #5183fe;
+        }
+        .inp-btn{
+            input{
+                width: 50vw;
+            }
+        }
+    }
 }
