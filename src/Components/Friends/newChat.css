@@ -84,3 +84,9 @@
 
   }
 
+  @media (width < 430px) {
+    .newChat{
+      top: 25vw;
+      left: auto;
+    }
+  }

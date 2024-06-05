@@ -9,7 +9,7 @@
   z-index: 300;
   
   img {
-    margin-top: 20px;
+    margin-top: 2.6vh;
     height: 170px;
     width: 170px;
     border-radius: 50%;
@@ -46,7 +46,7 @@
 } */
 
 .media {
-  height: 400px;
+  /* height: 400px; */
   width: 100%;
 
   h2 {
@@ -57,21 +57,25 @@
 }
 
 .allMedia {
+  height: auto;
   margin: 10px;
   /* border: 1px solid white; */
-  height: 83%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  overflow-y: scroll;
+  display: flex;
+  justify-content: start;
+  overflow-y: hidden;
+  gap: 10px;
 }
 
 .blank {
-  width: 111px;
-  height: 111px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
   background-color: #3498db;
   box-sizing: border-box;
   border: 0.5px solid rgba(255, 255, 255, 0.244);
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+
 }

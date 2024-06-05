@@ -1,30 +1,29 @@
-*{
-    margin: 0;
-    padding: 0;
-    
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background-color: #353535;
-    color: white;
+body {
+  background-color: #353535;
+  color: white;
 }
-.container{
-    display: flex;
-    color: white;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    overflow: hidden;
+.container {
+  display: flex;
+  color: white;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
 }
 
-
-.friends{
-    height: 100vh;
-    width: 25vw;
-    overflow: hidden;
-    position: absolute;
+.friends {
+  height: 100vh;
+  width: 25vw;
+  overflow: hidden;
+  position: absolute;
 }
+
 
 .myChat {
   height: 100vh;
@@ -37,53 +36,48 @@ body{
 }
 
 .myChat.active {
-  width: 52vw; 
-    background-color: aqua;
+  width: 52vw;
+  background-color: aqua;
 }
 
-.Reload{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.Reload {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.aboutChat{
-    width: 23vw;
-    transition: transform 0.3s ease-in-out;
-    /* position: relative; */
-    transform: translateX(0vw);
-
+.aboutChat {
+  width: 23vw;
+  transition: transform 0.3s ease-in-out;
+  /* position: relative; */
+  transform: translateX(100vw);
 }
 
-.aboutChat.active{
-    transform: translateX(0vw);
-    transition: transform 0.3s ease-in-out;
+.aboutChat.active {
+  transform: translateX(0vw);
+  transition: transform 0.3s ease-in-out;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 
+.welcome-page {
+  margin-left: 25vw;
+  width: 75vw;
+  color: white;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
 
-.welcome-page{
-    margin-left: 25vw;
-    width: 75vw;
-    color: white;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    flex-direction: column;
+  img {
+    margin-bottom: 70px;
+  }
 
-    img{
-        margin-bottom: 70px;
-    }
-
-
-}
-
-.welcome-text{
+  .welcome-text {
     margin-bottom: 15vmin;
     position: absolute;
     background-color: transparent;
@@ -92,14 +86,41 @@ body{
     flex-direction: column;
     gap: 5px;
 
-    
-    h1{
-        font-size: 32px;
-        font-weight: 700;
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
 
-        span{
-            color: #5485ff;
-            font-family: "Poetsen One", sans-serif;
-        }
+      span {
+        color: #5485ff;
+        font-family: "Poetsen One", sans-serif;
+      }
     }
+  }
 }
+
+
+
+@media (width < 430px) {
+    .friends {
+      width: 100vw;
+    }
+    .myChat {
+      display: none;
+    }
+    .welcome-page {
+      display: none;
+  
+      img {
+        display: none;
+      }
+  
+      .welcome-text {
+        h1 {
+          display: none;
+        }
+        p{
+          display: none;
+        }
+      }
+    }
+  }

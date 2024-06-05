@@ -9,7 +9,7 @@ import { useUserStore } from "./Items/userStore.js";
 import Loading from "./Items/Loading.jsx";
 import AboutChat from "./Components/AboutChat/AboutChat.jsx";
 import { useChatStore } from "./Items/chatStore.js";
-import Robot from './Items/robot.gif'
+import Robot from "./Items/robot.gif";
 
 function App() {
   const [aboutChat, setAboutChat] = useState(false);
@@ -57,11 +57,16 @@ function App() {
             </>
           ) : (
             <div className="welcome-page">
-              <img src={Robot} alt="robot"/>
+              <img src={Robot} alt="robot" />
               <div className="welcome-text">
-              <h1>Welcome to <span>ChitChat</span> </h1>
-              <p>Send and receive messages without keeping your phone online.</p>
-            </div></div>
+                <h1>
+                  Welcome to <span>ChitChat</span>{" "}
+                </h1>
+                <p>
+                  Send and receive messages without keeping your phone online.
+                </p>
+              </div>
+            </div>
           )}
         </>
       ) : (

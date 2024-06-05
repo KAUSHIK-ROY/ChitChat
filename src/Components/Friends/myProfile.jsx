@@ -147,9 +147,6 @@ export default function MyProfile() {
           <FontAwesomeIcon icon={faBars} />
         </button>
         <h1>ChitChat</h1>
-        <span className="isp">
-          <FontAwesomeIcon icon={faComments} />
-        </span>
       </div>
 
       <div className="mychats">
@@ -169,7 +166,7 @@ export default function MyProfile() {
           </div>
         </div>
         <div className="usearch">
-          <button className="sbtn">
+          <button>
             <FontAwesomeIcon icon={faSearch} />
           </button>
           <input type="text" placeholder="Search" onChange={(e) => setInput(e.target.value)}/>
