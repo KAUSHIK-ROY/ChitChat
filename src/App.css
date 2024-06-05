@@ -100,7 +100,7 @@ body {
 
 
 
-@media (width < 430px) {
+@media (width < 431px) {
     .friends {
       width: 100vw;
     }

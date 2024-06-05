@@ -36,7 +36,7 @@ h3{
 }
 
 
-@media (width < 430px){
+@media (width < 431px){
   .subMenu{
     left: 0;
     width: 100vw;
