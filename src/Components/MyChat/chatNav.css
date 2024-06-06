@@ -69,3 +69,18 @@
         }
     }
 }
+
+@media (width < 481px){
+    .back-btn{
+        height: 35px;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        color: white;
+        background-color: transparent;
+        font-size: larger;
+    }
+}

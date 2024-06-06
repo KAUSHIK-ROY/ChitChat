@@ -40,11 +40,10 @@
       align-self: flex-end;
 
       .text {
-         flex: 1;
-         display: flex;
-         flex-direction: column;
-         gap: 5px;
-
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
 
         p {
           padding: 20px;
@@ -134,16 +133,18 @@
   margin-bottom: 30px;
 }
 
-.send button {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border: none;
-  font-size: 30px;
-  color: #5183fe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.send {
+  button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 30px;
+    color: #5183fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .tinp {
@@ -197,4 +198,21 @@
 .ticon {
   padding: 15px 20px 15px 30px;
   font-size: 20px;
+}
+
+@media (width < 481px) {
+  .msg {
+    width: 100vw;
+  }
+  .personalchat {
+  }
+  .tdetails {
+    width: 98vw;
+    margin-bottom: 2vh;
+  }
+  .tinp {
+    width: 82vw;
+    margin-right: 1vw;
+  }
+
 }

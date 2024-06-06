@@ -306,6 +306,9 @@ button {
   .menulogo {
     height: 6.5vh;
     border-right: none;
+    h1{
+      color: rgb(0, 255, 0);
+    }
     .btn {
       left: 20vw;
     }

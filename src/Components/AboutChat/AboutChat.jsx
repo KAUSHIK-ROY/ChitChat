@@ -2,7 +2,7 @@ import React from "react";
 import "./aboutChat.css";
 import dp from "../../Items/Man-dp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useChatStore } from "../../Items/chatStore";
 
 export default function AboutChat({ toggleAbout }) {
@@ -12,8 +12,13 @@ export default function AboutChat({ toggleAbout }) {
     
       <div className="aboutContainer">
         <div className="btn">
-          <button className="all-btn" onClick={toggleAbout}>
+          <button className="cross-btn" onClick={toggleAbout}>
             <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </div>
+        <div className="btn3">
+          <button className="back-btn" onClick={toggleAbout}>
+            <FontAwesomeIcon icon={faArrowLeft} />
           </button>
         </div>
         <img src={user?.avatar || dp} alt="DP" />
