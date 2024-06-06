@@ -84,7 +84,7 @@
 
   }
 
-  @media (width < 431px) {
+  @media (width < 720px) {
     .newChat{
       bottom: 0;
       top: 27vw;

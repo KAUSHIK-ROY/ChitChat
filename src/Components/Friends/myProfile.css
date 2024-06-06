@@ -297,7 +297,7 @@ button{
 
 
 
-@media (width < 431px) {
+@media (width < 720px) {
   .menulogo{
     height: 6.5vh;
     border-right: none;

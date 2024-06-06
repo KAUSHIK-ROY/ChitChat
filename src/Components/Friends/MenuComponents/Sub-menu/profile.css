@@ -96,7 +96,7 @@
     
 }
 
-@media (width <= 431px) {
+@media (width <= 720px) {
     .profile{
         padding-top: 5vmin;
 

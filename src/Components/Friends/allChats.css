@@ -38,7 +38,7 @@
 }
 
 
-@media (width < 431px) {
+@media (width < 720px) {
     .allUsers{
         width: 86vw;
     }
