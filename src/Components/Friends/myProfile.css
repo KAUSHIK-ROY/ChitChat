@@ -1,16 +1,15 @@
 .friends {
   height: 100vh;
 }
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 
 .menulogo {
   height: 10vh;
   display: flex;
-  align-items: center; 
+  align-items: center;
   padding-left: 2.7vmin;
   background-color: rgb(21, 21, 21);
   border-bottom: 0.5px solid rgb(56, 56, 56);
@@ -19,9 +18,9 @@ button{
   h1 {
     color: #5485ff;
     font-family: "Poetsen One", sans-serif;
-    margin:0 9.7vmin 0 7vmin;
+    margin: 0 9.7vmin 0 7vmin;
     position: absolute;
-    width:15.3vw;
+    width: 15.3vw;
     display: flex;
     justify-content: center;
   }
@@ -48,7 +47,6 @@ button{
   background-color: #5183fe;
 }
 
-
 .all-btn1:hover {
   color: #5183fe;
 }
@@ -56,7 +54,6 @@ button{
 .all-btn1:active {
   color: white;
 }
-
 
 .slideMenu {
   width: 23vw;
@@ -85,7 +82,7 @@ button{
   gap: 20px;
 }
 .switch-btn,
-.log-btn { 
+.log-btn {
   height: 50px;
   width: 20vw;
   border-radius: 10px;
@@ -96,9 +93,8 @@ button{
 }
 
 .switch-btn {
-    border: 3px solid #5183fe;
-    background-color: transparent;
-    
+  border: 3px solid #5183fe;
+  background-color: transparent;
 }
 .switch-btn:hover {
   box-shadow: 0px 0px 15px #5183fe;
@@ -141,11 +137,10 @@ button{
 
 .log:hover {
   box-shadow: 0px 0px 15px #5183fe;
-  .log-btn{
+  .log-btn {
     color: red;
     transition: all 0.5s ease-in-out;
   }
-  
 }
 
 .allList {
@@ -154,7 +149,6 @@ button{
   margin-top: 3vh;
 
   ul {
-
     li {
       width: 23vw;
       display: flex;
@@ -172,13 +166,12 @@ button{
         font-size: 20px;
         overflow: hidden;
 
-        img{
+        img {
           height: 30px;
           width: 30px;
           border-radius: 50%;
           object-fit: cover;
           overflow: hidden;
-
         }
       }
       .iname {
@@ -196,7 +189,6 @@ button{
   left: 0%;
 }
 
-
 .mychats {
   height: 90vh;
   display: flex;
@@ -205,7 +197,6 @@ button{
   padding-top: 20px;
   background-color: rgb(21, 21, 21);
   border-right: 0.5px solid rgb(56, 56, 56);
-
 }
 .dpicon {
   height: 90%;
@@ -223,7 +214,7 @@ button{
   justify-content: center;
   margin-bottom: 15px;
 
-  button{
+  button {
     background-color: transparent;
     color: rgb(150, 150, 150);
     height: 100%;
@@ -294,77 +285,89 @@ button{
   border: none;
 }
 
+.null-chat {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  border-top: 0.5px solid rgb(56, 56, 56);
+  padding-bottom: 20vh;
+  margin-top: 2vh;
+  p {
+    padding-top: 2vh;
+    font-size: 12px;
 
+    span {
+      color: rgb(0, 255, 0);
+    }
+  }
+}
 
-
-@media (width < 721px) {
-  .menulogo{
+@media (width < 481px) {
+  .menulogo {
     height: 6.5vh;
     border-right: none;
-    .btn{
+    .btn {
       left: 20vw;
     }
 
-    h1{
+    h1 {
       /* width: 100vmin; */
-      margin-left:11vmin;
+      margin-left: 11vmin;
       width: 72.6vw;
     }
-    .slideMenu{
+    .slideMenu {
       width: 90vw;
+      position:absolute;
 
-      .allList{
-        ul{
-          li{
+      .allList {
+        ul {
+          li {
             width: 90vw;
 
-            .idiv{
-              margin-left:10vw;
+            .idiv {
+              margin-left: 10vw;
             }
             .iname {
               width: 60vw;
               display: flex;
               align-items: center;
-            }         
+            }
           }
         }
       }
     }
   }
-  .btn{
+  .btn {
     padding-left: 76.3vw;
   }
-  .logAcc{
+  .logAcc {
     width: 90vw;
     margin-top: 15vh;
     display: flex;
-  } 
+  }
   .switch-btn,
-  .log-btn { 
+  .log-btn {
     height: 50px;
     width: 78.26vw;
   }
-  .im{
+  .im {
     width: 86vw;
   }
-  .micn{
+  .micn {
     gap: 7vw;
   }
 
-  .mychats{
+  .mychats {
     height: 93.5vh;
     padding-top: 1vh;
     border-right: none;
   }
 
-  .usearch{
+  .usearch {
     width: 86vw;
-    /* margin-bottom:0 ; */
   }
-  .allchats{
+  .allchats {
     height: 82vh;
-    position: absolute;
     bottom: 0;
   }
-
 }

@@ -11,6 +11,7 @@ import {
   faCircleInfo,
   faComments,
   faGear,
+  faLock,
   faPenToSquare,
   faPhotoVideo,
   faSdCard,
@@ -173,6 +174,17 @@ export default function MyProfile() {
         </div>
         <div className="allchats">
           <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <AllChats input={input}/>
+          <div className="null-chat">
+            <p><span><FontAwesomeIcon icon={faLock}/></span> Your personal messages are <span>end-to-end encrypted</span></p>
+          </div>
         </div>
       </div>
     </div>

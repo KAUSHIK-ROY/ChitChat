@@ -34,12 +34,19 @@
     p{
         width: 14vw;
         overflow: hidden; 
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
 
 
-@media (width < 721px) {
+@media (width < 481px) {
     .allUsers{
         width: 86vw;
+    }
+    .shortdetail{    
+        p{
+            width: 60vw;
+        }
     }
 }
