@@ -107,7 +107,6 @@ body {
     .myChat {
       position:absolute;
       width: 100vw;
-      background-color: red;
       margin-left: 0;
     }
     .aboutChat{

@@ -71,16 +71,25 @@
 }
 
 @media (width < 481px){
-    .back-btn{
-        height: 35px;
-        width: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 50%;
-        color: white;
-        background-color: transparent;
-        font-size: larger;
+    .udetails{
+        padding-left: 2.5vw;
+    }
+    .btn4{
+        padding-right: 1.5vw;
+        .back-btn{
+            height: 35px;
+            width: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            background-color: transparent;
+            font-size: larger;
+            &:active{
+                background-color: #5183fe;
+            }
+        }
     }
 }

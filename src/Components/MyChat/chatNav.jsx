@@ -1,6 +1,7 @@
 import "./chatNav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faEllipsisVertical,
   faPhone,
   faVideo,
@@ -17,6 +18,11 @@ export default function ChatNav({ aboutChat, toggleAbout }) {
     <>
       <div className="user">
         <div className="udetails">
+        <div className="btn4">
+          <button className="back-btn">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        </div>
           <div className="uicon">
             <img
               src={user?.avatar || dp}

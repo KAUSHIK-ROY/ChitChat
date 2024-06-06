@@ -12,7 +12,6 @@
   justify-content: space-between;
   transition: width 0.3s ease-in-out;
   /* border: 1px solid white; */
-  /* margin-left: 25vw; */
 }
 
 ::-webkit-scrollbar {
@@ -21,29 +20,23 @@
 
 .personalchat {
   height: 81vh;
-  width: 91%;
-  /* border: 1px solid rgb(255, 255, 255); */
-  padding: 20px 50px;
+  /* width: 75vw; */
+  padding: 20px 12px;
   flex: 1;
-  /* overflow-x: hidden; */
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  overflow-x: hidden;  
 
   .message {
-    display: flex;
-    gap: 20px;
     max-width: 70%;
 
     &.own {
-      align-self: flex-end;
 
       .text {
         flex: 1;
         display: flex;
         flex-direction: column;
         gap: 5px;
+        width: 70vw;
+        margin-bottom: 20px;
 
         p {
           padding: 20px;
@@ -53,7 +46,7 @@
           max-width: 88vmin;
           word-wrap: break-word;
           overflow-wrap: break-word;
-          position: relative;
+          position: relative; 
 
           &:after {
             content: "";
@@ -85,6 +78,7 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        margin-bottom: 20px;
 
         p {
           padding: 20px;
@@ -92,7 +86,6 @@
           background-color: #33487d70;
           /* background-color: #6789da66; */
           backdrop-filter: blur(3px);
-
           align-self: flex-start;
           max-width: 88vmin;
           word-wrap: break-word;
@@ -203,8 +196,9 @@
 @media (width < 481px) {
   .msg {
     width: 100vw;
-  }
-  .personalchat {
+    background-image: url(../../Items/yourname.jpg);
+    background-repeat: no-repeat; 
+    background-position: top 8vh center;
   }
   .tdetails {
     width: 98vw;
@@ -213,6 +207,55 @@
   .tinp {
     width: 82vw;
     margin-right: 1vw;
+    padding-right: 0;
   }
+  .ticon {
+    padding: 15px 10px 15px 13px;
+    font-size: 20px;
+  }
+  .inpMsg {
+    padding: 15px 5px 0px 5px;
+  }
+  .micclip {
+    display: flex;
+    gap: 20px;
+    padding: 0 10px 15px 0;
+  }
+  .personalchat{
+    width: 93vw;
+    padding: 20px 4vw;
+    .message {
 
+      &.own {
+  
+        .text {
+          width: 93vw;
+          p{
+            padding: 3vmin;
+            border-radius:  10px 0 10px 10px;
+            max-width: 60vw;
+            &:after {
+              right: -7px;
+              width: 7px;
+              height: 7px;
+            }
+          }
+        }
+      }
+      &.frnd {
+        .text {
+          p{
+            padding: 3vmin;
+            max-width: 60vw;
+            border-radius: 0 10px 10px 10px;
+            &:after {
+              left: -7px;
+              width: 7px;
+              height: 7px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
