@@ -9,9 +9,15 @@ import {
 import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
+import { useState } from "react";
 
-export default function ChatNav({ aboutChat, toggleAbout }) {
-  const { user } = useChatStore();
+export default function ChatNav({ aboutChat, toggleAbout}) {
+  const { user, chatId,resetChat } = useChatStore();
+  const[openMsg,setOpenMsg]= useState(chatId);
+  const toggleMsgDiv= ()=>{
+    setOpenMsg(null)
+    resetChat();
+  }
 
 
   return (
@@ -19,7 +25,7 @@ export default function ChatNav({ aboutChat, toggleAbout }) {
       <div className="user">
         <div className="udetails">
         <div className="btn4">
-          <button className="back-btn">
+          <button className="back-btn" onClick={toggleMsgDiv}>
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
         </div>

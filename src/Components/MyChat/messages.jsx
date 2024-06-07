@@ -24,16 +24,16 @@ import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import EmojiPicker from "emoji-picker-react";
 
 export default function Messages({ aboutChat, toggleAbout }) {
-  let [open, setOpen] = useState(false);
-  const [img, setImg] = useState({
-    file: null,
-    url: "",
-  });
   const [text, setText] = useState("");
   const { chatId, user } = useChatStore();
   const { currentUser } = useUserStore();
   const endRef = useRef(null);
   const [chat, setChat] = useState();
+  const [open, setOpen] = useState(false);
+  const [img, setImg] = useState({
+    file: null,
+    url: "",
+  });
   // const formatter = buildFormatter()
   const formatter = (value, unit, suffix, epochSeconds, nextFormatter) => {
     if (unit === "second") {
@@ -149,8 +149,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
     } else if (isYesterday(date)) {
       return "Yesterday";
     } else {
-      // return format(date, 'd MMMM yyyy');
-      return format(new Date(), 'eeee, do MMMM yyyy');
+      return format(date, 'eeee, MMMM do, yyyy');
     }
   };
 
@@ -172,7 +171,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
         <div className="personalchat ">
           {chat?.messages && Object.entries(groupMessagesByDate(chat.messages)).map(([date, messages]) => (
             <div key={date}>
-          <div className="date-header">{formatDateHeader()}</div>
+          <div className="date-header">{formatDateHeader(new Date(date))}</div>
           {chat?.messages?.map((message) => (
             // <div className="message">
             <div
