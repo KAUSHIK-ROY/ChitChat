@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/ChitChat/static/css/main.835a409d.css",
-    "main.js": "/ChitChat/static/js/main.722c9b23.js",
+    "main.css": "/ChitChat/static/css/main.39ddcd31.css",
+    "main.js": "/ChitChat/static/js/main.4f945f47.js",
     "static/js/453.c07c44db.chunk.js": "/ChitChat/static/js/453.c07c44db.chunk.js",
     "static/media/robot.gif": "/ChitChat/static/media/robot.0617a41936621e9697cd.gif",
     "static/media/yourname1.jpg": "/ChitChat/static/media/yourname1.9bd58c05a8237a2fdf15.jpg",
     "static/media/yourname.jpg": "/ChitChat/static/media/yourname.bef04a375720315fd239.jpg",
     "static/media/google-logo-9824.png": "/ChitChat/static/media/google-logo-9824.b31361249fb7518952ee.png",
     "index.html": "/ChitChat/index.html",
-    "main.835a409d.css.map": "/ChitChat/static/css/main.835a409d.css.map",
-    "main.722c9b23.js.map": "/ChitChat/static/js/main.722c9b23.js.map",
+    "main.39ddcd31.css.map": "/ChitChat/static/css/main.39ddcd31.css.map",
+    "main.4f945f47.js.map": "/ChitChat/static/js/main.4f945f47.js.map",
     "453.c07c44db.chunk.js.map": "/ChitChat/static/js/453.c07c44db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.835a409d.css",
-    "static/js/main.722c9b23.js"
+    "static/css/main.39ddcd31.css",
+    "static/js/main.4f945f47.js"
   ]
 }
