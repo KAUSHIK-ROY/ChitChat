@@ -12,7 +12,7 @@ import { useChatStore } from "../../Items/chatStore.js";
 import { useEffect, useState } from "react";
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
-  const { user, chatId,resetChat, updateUserStatus } = useChatStore();
+  const { user, chatId,resetChat, updateUserStatus, isUserOnline } = useChatStore();
   const[openMsg,setOpenMsg]= useState(chatId);
   const toggleMsgDiv= ()=>{
     setOpenMsg(null)
@@ -59,7 +59,7 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
           </div>
           <div className="uname">
             <h4>{user?.userName}</h4>
-            <p>{user?.online ? (<span>Online</span>) : 'Offline'}</p>
+            <p>{isUserOnline ? (<span>Online</span>) : 'Offline'}</p>
           </div>
         </div>
         <div className="socialIcons">

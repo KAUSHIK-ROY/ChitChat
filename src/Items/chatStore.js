@@ -1,7 +1,5 @@
 import { create } from 'zustand'
 import { useUserStore } from './userStore';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from './Firebase';
 
 export const useChatStore = create((set) => ({
   chatId: null,
@@ -11,12 +9,6 @@ export const useChatStore = create((set) => ({
 
   changeChat: async (chatId, user) => {
     const currentUser = useUserStore.getState().currentUser;
-
-    // Fetch the online status of the user
-    // const userDoc = await getDoc(doc(db, "users", user.id));
-    // if (userDoc.exists()) {
-    //   user = { ...user, online: userDoc.data().online };
-    // }
 
     // CHECK IF CURRENT USER IS BLOCKED
     if (user.blocked.includes(currentUser.id)) {
@@ -45,10 +37,8 @@ export const useChatStore = create((set) => ({
       });
     }
   },
-  updateUserStatus: (online) => {
-    set((state) => ({
-      user: state.user ? { ...state.user, online } : null
-    }));
+  updateUserStatus: (isOnline) => {
+    set({ isUserOnline: isOnline });
   },
 
   changeBlock: () => {
