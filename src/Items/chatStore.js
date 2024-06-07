@@ -13,10 +13,10 @@ export const useChatStore = create((set) => ({
     const currentUser = useUserStore.getState().currentUser;
 
     // Fetch the online status of the user
-    const userDoc = await getDoc(doc(db, "users", user.id));
-    if (userDoc.exists()) {
-      user = { ...user, online: userDoc.data().online };
-    }
+    // const userDoc = await getDoc(doc(db, "users", user.id));
+    // if (userDoc.exists()) {
+    //   user = { ...user, online: userDoc.data().online };
+    // }
 
     // CHECK IF CURRENT USER IS BLOCKED
     if (user.blocked.includes(currentUser.id)) {
@@ -44,6 +44,11 @@ export const useChatStore = create((set) => ({
         isReceiverBlocked: false,
       });
     }
+  },
+  updateUserStatus: (online) => {
+    set((state) => ({
+      user: state.user ? { ...state.user, online } : null
+    }));
   },
 
   changeBlock: () => {

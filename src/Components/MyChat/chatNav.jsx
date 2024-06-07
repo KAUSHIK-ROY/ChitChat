@@ -9,16 +9,35 @@ import {
 import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
-  const { user, chatId,resetChat } = useChatStore();
+  const { user, chatId,resetChat, updateUserStatus } = useChatStore();
   const[openMsg,setOpenMsg]= useState(chatId);
   const toggleMsgDiv= ()=>{
     setOpenMsg(null)
     resetChat();
   }
 
+  useEffect(() => {
+    const handleOnline = () => {
+      console.log("User Online");
+      updateUserStatus(true);
+    };
+    const handleOffline = () => {
+      console.log("User Offline");
+      updateUserStatus(false);
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, [updateUserStatus]);
+  
 
   return (
     <>

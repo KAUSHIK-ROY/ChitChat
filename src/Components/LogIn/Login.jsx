@@ -26,26 +26,12 @@ export default function Login() {
 
   // firebase google login
 
-  // const googleLogin = () => {
-  //   const provider = new GoogleAuthProvider();
-  //   signInWithPopup(auth, provider).then(async (result) => {
-  //     console.log(result);
-  //   });
-  // };
-
-  const googleLogin = async () => {
+  const googleLogin = () => {
     const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      await setDoc(doc(db, "users", result.user.uid), {
-        online: true,
-      }, { merge: true }); // Merge with existing data
-      toast.success("Successfully Login with Google");
-    } catch (err) {
-      toast.error(err.message);
-    }
+    signInWithPopup(auth, provider).then(async (result) => {
+      console.log(result);
+    });
   };
-  
 
 
 // simple login
@@ -57,10 +43,7 @@ export default function Login() {
     const { email, password } = Object.fromEntries(formData);
 
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, "users", res.user.uid), {
-        online: true,
-      }, { merge: true });
+      await signInWithEmailAndPassword(auth, email, password);
       toast.success("Successfully Login");
     } catch (err) {
       toast.error(err.message);
@@ -90,7 +73,6 @@ export default function Login() {
         password,
         id: res.user.uid,
         blocked: [],
-        online: true,
       });
 
       await setDoc(doc(db, "userChats", res.user.uid), {
