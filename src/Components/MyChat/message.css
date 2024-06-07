@@ -25,6 +25,15 @@
   flex: 1;
   overflow-x: hidden;  
 
+  .date-header{
+    margin: 2vh 25vw 2vh 25vw;
+    border-radius: 10px;
+    border:1px solid  #ffffff;
+    text-align: center;
+    background-color:#7f7f7f96;
+    padding: 3px 0 3px 0;
+  }
+
   .message {
     max-width: 70%;
 
@@ -66,7 +75,7 @@
         }
 
         span {
-          font-size: 13px;
+          font-size: 10px;
           align-self: flex-end;
         }
       }
@@ -112,7 +121,7 @@
       }
 
       span {
-        font-size: 13px;
+        font-size: 10px;
       }
     }
   }

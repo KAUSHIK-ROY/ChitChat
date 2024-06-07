@@ -12,10 +12,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../Items/Firebase.js";
-// import { format } from "timeago.js";
-import TimeAgo from 'react-timeago'
-import frenchStrings from 'react-timeago/lib/language-strings/fr'
-import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+import { format, formatISO, isToday, isYesterday } from "date-fns";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -39,8 +36,8 @@ export default function Messages({ aboutChat, toggleAbout }) {
   const [chat, setChat] = useState();
   // const formatter = buildFormatter()
   const formatter = (value, unit, suffix, epochSeconds, nextFormatter) => {
-    if (unit === 'second') {
-      return 'just now';
+    if (unit === "second") {
+      return "just now";
     }
     return nextFormatter(value, unit, suffix, epochSeconds, nextFormatter);
   };
@@ -142,35 +139,68 @@ export default function Messages({ aboutChat, toggleAbout }) {
     textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
   }, [text]);
 
+  const formatTime = (date) => {
+    return format(date, "hh:mm a");
+  };
+
+  const formatDateHeader = (date) => {
+    if (isToday(date)) {
+      return "Today";
+    } else if (isYesterday(date)) {
+      return "Yesterday";
+    } else {
+      // return format(date, 'd MMMM yyyy');
+      return format(new Date(), 'eeee, do MMMM yyyy');
+    }
+  };
+
+  const groupMessagesByDate = (messages) => {
+    const groups = {};
+    messages.forEach((message) => {
+      const date = formatISO(message.createdAt.toDate(), { representation: 'date' });
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(message);
+    });
+    return groups;
+  };
   return (
     <div>
       <div className="msg">
         <ChatNav toggleAbout={toggleAbout} showAbout={aboutChat} />
         <div className="personalchat ">
+          {chat?.messages && Object.entries(groupMessagesByDate(chat.messages)).map(([date, messages]) => (
+            <div key={date}>
+          <div className="date-header">{formatDateHeader()}</div>
           {chat?.messages?.map((message) => (
             // <div className="message">
             <div
               className={
-                message.senderId === currentUser?.id ? "message own" : "message frnd"
+                message.senderId === currentUser?.id
+                  ? "message own"
+                  : "message frnd"
               }
               key={message?.createAt}
             >
               <div className="text">
-                {/* {message.img && <img src={message.img} alt="" />} */}
+                {message.img && <img src={message.img} alt="" />}
                 <p>{message.text}</p>
-                <span><TimeAgo date={message.createdAt.toDate()} /></span>
+                <span>{formatTime(message.createdAt.toDate())}</span>
               </div>
             </div>
           ))}
-          {/* {img.url && (
+          </div>
+          ))}
+          {img.url && (
           
             <div className="message own">
               <div className="text">
                 <img src={img.url} alt="" />
-                <span>{format(Message.createdAt.toDate())}</span>
+                {/* <span>{formatTime(message.createdAt.toDate())}</span> */}
               </div>
             </div>)
-          } */}
+          }
 
           <div ref={endRef}></div>
         </div>
@@ -180,7 +210,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
             <FontAwesomeIcon
               icon={faFaceSmile}
               className="ticon"
-              onClick={() => setOpen((prev) => !prev)} 
+              onClick={() => setOpen((prev) => !prev)}
             />
             <div className="picker">
               <EmojiPicker
