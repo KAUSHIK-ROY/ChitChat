@@ -172,7 +172,7 @@ export default function Messages({ aboutChat, toggleAbout }) {
           {chat?.messages && Object.entries(groupMessagesByDate(chat.messages)).map(([date, messages]) => (
             <div key={date}>
           <div className="date-header">{formatDateHeader(new Date(date))}</div>
-          {chat?.messages?.map((message) => (
+          {messages.map((message) => (
             // <div className="message">
             <div
               className={

@@ -10,34 +10,52 @@ import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
 import { useEffect, useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../Items/Firebase.js";
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
-  const { user, chatId,resetChat, updateUserStatus, isUserOnline } = useChatStore();
+  const { user, chatId,resetChat } = useChatStore();
   const[openMsg,setOpenMsg]= useState(chatId);
   const toggleMsgDiv= ()=>{
     setOpenMsg(null)
     resetChat();
   }
 
+  const handleStatus = async (e) => {
+    try {
+      await setDoc(doc(db, "users", user.uid), {
+        online:[],
+      }, { merge: true });
+      console.log(user.online)
+    } catch (err) {
+      console.log(err);
+    } 
+  };
+
   useEffect(() => {
     const handleOnline = () => {
-      console.log("User Online");
-      updateUserStatus(true);
+      handleStatus(true);
+      console.log('online')
     };
     const handleOffline = () => {
-      console.log("User Offline");
-      updateUserStatus(false);
+      handleStatus(false);
     };
 
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
+    const checkReceiverStatus = () => {
+      if (navigator.onLine) {
+        handleOnline();
+      } else {
+        handleOffline();
+      }
+    };
+    checkReceiverStatus();
+    const intervalId = setInterval(checkReceiverStatus, 5000);
 
     return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
+      clearInterval(intervalId);
     };
-  }, [updateUserStatus]);
-  
+  }, []);
+
 
   return (
     <>
@@ -59,7 +77,7 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
           </div>
           <div className="uname">
             <h4>{user?.userName}</h4>
-            <p>{isUserOnline ? (<span>Online</span>) : 'Offline'}</p>
+            <p>{user?.online ? (<span>Online</span>) : 'Offline'}</p>
           </div>
         </div>
         <div className="socialIcons">

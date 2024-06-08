@@ -53,13 +53,6 @@ export default function MyProfile() {
     try {
       const user = auth.currentUser;
       if (user) {
-        await setDoc(
-          doc(db, "users", user.uid),
-          {
-            online: false,
-          },
-          { merge: true }
-        );
         await auth.signOut();
       }
     } catch (err) {
