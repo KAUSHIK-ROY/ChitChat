@@ -9,53 +9,73 @@ import {
 import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
-import { useEffect, useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../Items/Firebase.js";
+import {  useState } from "react";
+import { doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../../Items/Firebase.js";
+import { onDisconnect, ref, set, getDatabase  } from "firebase/database";
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
-  const { user, chatId,resetChat } = useChatStore();
+  const { user, chatId, resetChat } = useChatStore();
   const[openMsg,setOpenMsg]= useState(chatId);
   const toggleMsgDiv= ()=>{
     setOpenMsg(null)
     resetChat();
   }
 
-  const handleStatus = async (status) => {
-    try {
-      await setDoc(doc(db, "users", user.id), {
-        online: status,
-      }, { merge: true });
-      // console.log(user.online)
-    } catch (err) {
-      console.log(err);
-    } 
+const formatLastOnline = (timestamp) => {
+  if (!timestamp) return "Offline";
+  const date = new Date(timestamp);
+  return `Last online: ${date.toLocaleString()}`;
+};
+
+const setUserStatus = async (uid, status) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    status,
+    lastChanged: serverTimestamp(),
+  });
+};
+
+// Monitor user's connection state
+const monitorUserConnection = async (uid) => {
+  const dbRef = getDatabase();
+  const userStatusDatabaseRef = ref(dbRef, `/status/${uid}`);
+
+  const isOfflineForFirestore = {
+    state: "offline",
+    lastChanged: serverTimestamp(),
   };
 
-  useEffect(() => {
-    const handleOnline = () => {
-      handleStatus(true);
-      // console.log('online')
-    };
-    const handleOffline = () => {
-      handleStatus(false);
-      // console.log('offline')
-    };
+  const isOnlineForFirestore = {
+    state: "online",
+    lastChanged: serverTimestamp(),
+  };
 
-    const checkReceiverStatus = () => {
-      if (navigator.onLine) {
-        handleOnline();
-      } else {
-        handleOffline();
-      }
-    };
-    checkReceiverStatus();
-    const intervalId = setInterval(checkReceiverStatus, 3000);
+  set(userStatusDatabaseRef, isOnlineForFirestore);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  onDisconnect(userStatusDatabaseRef).set(isOfflineForFirestore);
+
+  setUserStatus(uid, "online");
+
+  window.addEventListener("beforeunload", () => {
+    setUserStatus(uid, "offline");
+  });
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      monitorUserConnection(user.uid);
+    } else {
+      setUserStatus(uid, "offline");
+    }
+  });
+};
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    monitorUserConnection(user.uid);
+  }
+});
+
 
 
   return (
@@ -78,7 +98,7 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
           </div>
           <div className="uname">
             <h4>{user?.userName}</h4>
-            <p>{user?.online ? (<span>Online</span>) : 'Offline'}</p>
+            <p>{user?.online ? (<span>Online</span>) : formatLastOnline(user?.lastChanged)}</p>
           </div>
         </div>
         <div className="socialIcons">

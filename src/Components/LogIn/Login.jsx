@@ -73,7 +73,7 @@ export default function Login() {
         password,
         id: res.user.uid,
         blocked: [],
-        online:[],
+        // online:[],
       });
 
       await setDoc(doc(db, "userChats", res.user.uid), {
