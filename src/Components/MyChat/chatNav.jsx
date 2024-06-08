@@ -21,12 +21,12 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
     resetChat();
   }
 
-  const handleStatus = async (e) => {
+  const handleStatus = async (status) => {
     try {
-      await setDoc(doc(db, "users", user.uid), {
-        online:[],
+      await setDoc(doc(db, "users", user.id), {
+        online: status,
       }, { merge: true });
-      console.log(user.online)
+      // console.log(user.online)
     } catch (err) {
       console.log(err);
     } 
@@ -35,10 +35,11 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
   useEffect(() => {
     const handleOnline = () => {
       handleStatus(true);
-      console.log('online')
+      // console.log('online')
     };
     const handleOffline = () => {
       handleStatus(false);
+      // console.log('offline')
     };
 
     const checkReceiverStatus = () => {
@@ -49,7 +50,7 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
       }
     };
     checkReceiverStatus();
-    const intervalId = setInterval(checkReceiverStatus, 5000);
+    const intervalId = setInterval(checkReceiverStatus, 3000);
 
     return () => {
       clearInterval(intervalId);
