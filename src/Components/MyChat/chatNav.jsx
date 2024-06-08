@@ -9,10 +9,7 @@ import {
 import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
-import {  useState } from "react";
-import { doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
-import { auth, db } from "../../Items/Firebase.js";
-import { onDisconnect, ref, set, getDatabase  } from "firebase/database";
+import { useState } from "react";
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
   const { user, chatId, resetChat } = useChatStore();
@@ -21,60 +18,6 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
     setOpenMsg(null)
     resetChat();
   }
-
-const formatLastOnline = (timestamp) => {
-  if (!timestamp) return "Offline";
-  const date = new Date(timestamp);
-  return `Last online: ${date.toLocaleString()}`;
-};
-
-const setUserStatus = async (uid, status) => {
-  const userRef = doc(db, "users", uid);
-  await updateDoc(userRef, {
-    status,
-    lastChanged: serverTimestamp(),
-  });
-};
-
-// Monitor user's connection state
-const monitorUserConnection = async (uid) => {
-  const dbRef = getDatabase();
-  const userStatusDatabaseRef = ref(dbRef, `/status/${uid}`);
-
-  const isOfflineForFirestore = {
-    state: "offline",
-    lastChanged: serverTimestamp(),
-  };
-
-  const isOnlineForFirestore = {
-    state: "online",
-    lastChanged: serverTimestamp(),
-  };
-
-  set(userStatusDatabaseRef, isOnlineForFirestore);
-
-  onDisconnect(userStatusDatabaseRef).set(isOfflineForFirestore);
-
-  setUserStatus(uid, "online");
-
-  window.addEventListener("beforeunload", () => {
-    setUserStatus(uid, "offline");
-  });
-
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      monitorUserConnection(user.uid);
-    } else {
-      setUserStatus(uid, "offline");
-    }
-  });
-};
-
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    monitorUserConnection(user.uid);
-  }
-});
 
 
 
@@ -116,3 +59,10 @@ auth.onAuthStateChanged((user) => {
     </>
   );
 }
+
+
+const formatLastOnline = (timestamp) => {
+  if (!timestamp) return "Offline";
+  const date = new Date(timestamp);
+  return `Last online: ${date.toLocaleString()}`;
+};
