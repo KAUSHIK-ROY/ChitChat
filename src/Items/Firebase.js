@@ -1,8 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, onAuthStateChanged} from "firebase/auth"
-import {getFirestore, doc, updateDoc, serverTimestamp} from "firebase/firestore"
+import {getAuth} from "firebase/auth"
+import {getFirestore} from "firebase/firestore"
 import {getStorage} from 'firebase/storage'
-import { getDatabase, ref, set, onDisconnect } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCNaYz5jBsaB1CZmNqWZyXJjFGjGgjMKQU",
   authDomain: "chitchat-422817.firebaseapp.com",
@@ -15,47 +14,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
-const rtdb = getDatabase(app);
 
-const setUserStatus = async (uid, status) => {
-  const userRef = doc(db, "users", uid);
-  await updateDoc(userRef, {
-    status,
-    lastChanged: serverTimestamp(),
-  });
-};
-
-const monitorUserConnection = (uid) => {
-  const userStatusDatabaseRef = ref(rtdb, `/status/${uid}`);
-
-  const isOfflineForFirestore = {
-    state: "offline",
-    lastChanged: serverTimestamp(),
-  };
-
-  const isOnlineForFirestore = {
-    state: "online",
-    lastChanged: serverTimestamp(),
-  };
-
-  set(userStatusDatabaseRef, isOnlineForFirestore);
-
-  onDisconnect(userStatusDatabaseRef).set(isOfflineForFirestore);
-
-  setUserStatus(uid, "online");
-
-  window.addEventListener("beforeunload", () => {
-    setUserStatus(uid, "offline");
-  });
-};
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    monitorUserConnection(user.uid);
-  }
-});
-
-export { auth, db, storage, rtdb };
+export const auth = getAuth();
+export const db = getFirestore();
+export const storage = getStorage();   
+// export default app;

@@ -9,16 +9,24 @@ import {
 import AboutChat from "../AboutChat/AboutChat.jsx";
 import dp from "../../Items/Man-dp.png";
 import { useChatStore } from "../../Items/chatStore.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
 
 export default function ChatNav({ aboutChat, toggleAbout}) {
-  const { user, chatId, resetChat } = useChatStore();
+  const { user, chatId, resetChat, onlineStatus, lastChanged } = useChatStore();
   const[openMsg,setOpenMsg]= useState(chatId);
+
   const toggleMsgDiv= ()=>{
     setOpenMsg(null)
     resetChat();
   }
 
+
+  // const formatLastOnline = (lastChanged) => {
+  //   if (!lastChanged) return '';
+  //   return lastChanged.toLocaleString(); // Customize the date format as needed
+  // };
 
 
   return (
@@ -41,7 +49,7 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
           </div>
           <div className="uname">
             <h4>{user?.userName}</h4>
-            <p>{user?.online ? (<span>Online</span>) : formatLastOnline(user?.lastChanged)}</p>
+            <p>{user?.online ? (<span>Online</span>) : 'Offline'}</p>
           </div>
         </div>
         <div className="socialIcons">
@@ -60,9 +68,3 @@ export default function ChatNav({ aboutChat, toggleAbout}) {
   );
 }
 
-
-const formatLastOnline = (timestamp) => {
-  if (!timestamp) return "Offline";
-  const date = new Date(timestamp);
-  return `Last online: ${date.toLocaleString()}`;
-};
