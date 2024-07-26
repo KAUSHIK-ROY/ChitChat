@@ -57,6 +57,15 @@
           overflow-wrap: break-word;
           position: relative; 
 
+          img {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            right: 0;
+            background-color: red;
+          }
+
           &:after {
             content: "";
             position: absolute;
@@ -100,6 +109,8 @@
           word-wrap: break-word;
           overflow-wrap: break-word;
           position: relative;
+
+          
 
           &:after {
             content: "";

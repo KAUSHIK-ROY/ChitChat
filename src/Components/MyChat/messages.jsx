@@ -201,11 +201,11 @@ export default function Messages({ aboutChat, toggleAbout }) {
                   {messages.map((message) => (
                     // <div className="message">
                     <div
-                      className={
+                      className={`message ${
                         message.senderId === currentUser?.id
-                          ? "message own"
-                          : "message frnd"
-                      }
+                          ? "own"
+                          : "frnd"
+                      }`}
                       key={message?.createAt}
                     >
                       <div className="text">
