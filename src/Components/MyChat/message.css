@@ -1,7 +1,7 @@
 .msg {
   width: 75vw;
   background-color: rgb(35, 35, 35);
-  background-image: url(../../Items/yourname1.jpg);
+  /* background-image: url(../../Items/yourname1.jpg); */
   background-repeat: no-repeat;
   background-size: 100vw;
   color: white;
@@ -32,6 +32,7 @@
     text-align: center;
     background-color:#7f7f7f96;
     padding: 3px 0 5px 0;
+    cursor: default;
   }
 
   .message {
@@ -86,6 +87,7 @@
         span {
           font-size: 10px;
           align-self: flex-end;
+          cursor: default;
         }
       }
     }
@@ -133,6 +135,7 @@
 
       span {
         font-size: 10px;
+        cursor: default;
       }
     }
   }
@@ -185,10 +188,15 @@
 .micclip {
   display: flex;
   gap: 3px;
+  /* background-color: red; */
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 1;
 
   .micclip-icn{
     padding: 15px 20px 15px 20px;
     font-size: 20px;
+    border-radius: 15px;
     &:hover{
       background-color: rgb(68, 68, 68);
     }
@@ -219,6 +227,7 @@
 
   padding: 15px 20px 15px 20px;
   font-size: 20px;
+  cursor: pointer;
 
   &:hover{
     background-color: rgb(68, 68, 68);
@@ -239,7 +248,8 @@
   flex-direction: column;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-
+  cursor: default;
+  z-index: -1;
 }
 
 .attachFiles{
@@ -259,13 +269,14 @@
 
   &:hover{
     background-color: rgb(68, 68, 68);
+    /* cursor: pointer; */
   }
 }
 
 @media (width < 481px) {
   .msg {
     width: 100vw;
-    background-image: url(../../Items/yourname.jpg);
+    /* background-image: url(../../Items/yourname.jpg); */
     background-repeat: no-repeat; 
     background-position: top 8vh center;
   }

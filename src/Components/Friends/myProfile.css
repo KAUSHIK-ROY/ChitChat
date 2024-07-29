@@ -23,6 +23,7 @@ button {
     width: 15.3vw;
     display: flex;
     justify-content: center;
+    cursor: default;
   }
 }
 
@@ -49,6 +50,7 @@ button {
 
 .all-btn1:hover {
   color: #5183fe;
+  cursor: pointer;
 }
 
 .all-btn1:active {
@@ -246,11 +248,13 @@ button {
 .msgarr {
   display: flex;
   align-items: center;
+  cursor: default;
 }
 
 .micn {
   display: flex;
   gap: 2.5vmin;
+
 }
 
 .downarrow {
@@ -292,9 +296,11 @@ button {
   border-top: 0.5px solid rgb(56, 56, 56);
   padding-bottom: 20vh;
   margin-top: 2vh;
+
   p {
     padding-top: 2vh;
     font-size: 12px;
+    cursor: default;
 
     span {
       color: rgb(0, 255, 0);

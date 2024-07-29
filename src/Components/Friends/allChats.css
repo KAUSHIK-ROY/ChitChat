@@ -31,11 +31,16 @@
 .shortdetail{
     padding-left:10px;
 
+    h4{
+        cursor: default;
+    }
+
     p{
         width: 14vw;
         overflow: hidden; 
         white-space: nowrap;
         text-overflow: ellipsis;
+        cursor: default;
     }
 }
 
