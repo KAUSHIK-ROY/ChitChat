@@ -41,6 +41,9 @@
   transition: 0.3s;
   text-shadow: none;
 }
+.block-btn:active {
+  background-color: red;
+}
 
 .cross-btn {
   height: 35px;
@@ -90,12 +93,18 @@
   width: 60px;
   height: 60px;
   border-radius: 10px;
-  background-color: #3498db;
+  background-color: #2b2b2b;
   box-sizing: border-box;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  object-fit: cover;
+}
+.blank img{
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
   object-fit: cover;
 }
 

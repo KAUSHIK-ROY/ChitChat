@@ -56,7 +56,6 @@
     display: flex;
     gap: 2vw;
     padding-right: 1vmin;
-    cursor: pointer;
 
     .nav-btn{
         height: 40px;
@@ -65,6 +64,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
         /* font-size: 16px; */
     
         &:hover{
