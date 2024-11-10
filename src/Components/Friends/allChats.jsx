@@ -20,7 +20,12 @@ export default function AllChats({input}) {
     const unSub = onSnapshot(
       doc(db, "userChats", currentUser.id),
       async (res) => {
-        const items = res.data().chats;
+        const data = res.data();
+        if (!data || !data.chats) {
+          console.error("No chats found for the current user.");
+          return; // Exit if no chats are found
+        }
+        const items = data.chats;
 
         const promises = items.map(async (item) => {
           const userDocRef = doc(db, "users", item.receiverId);
@@ -66,7 +71,7 @@ export default function AllChats({input}) {
     }
   };
   const filteredChats = chats.filter((c) =>
-    c.user.userName.toLowerCase().includes(input.toLowerCase())
+    c.user && c.user.userName && c.user.userName.toLowerCase().includes(input.toLowerCase())
   );
   
 
