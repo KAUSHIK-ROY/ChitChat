@@ -22,6 +22,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    cursor: pointer;
 
     img{
         height: 50px;
@@ -39,6 +40,7 @@
     padding-left: 10px;
     display: flex;
     flex-direction: column;
+    cursor: default;
 
     p{
         font-size: 12px;
@@ -62,6 +64,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
         /* font-size: 16px; */
     
         &:hover{

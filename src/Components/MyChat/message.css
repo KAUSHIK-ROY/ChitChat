@@ -1,7 +1,8 @@
 .msg {
   width: 75vw;
+  /* width: 100%; */
   background-color: rgb(35, 35, 35);
-  background-image: url(../../Items/yourname1.jpg);
+  /* background-image: url(../../Items/yourname1.jpg); */
   background-repeat: no-repeat;
   background-size: 100vw;
   color: white;
@@ -20,10 +21,11 @@
 
 .personalchat {
   height: 81vh;
-  /* width: 75vw; */
+  width: 70vw;
   padding: 20px 12px;
   flex: 1;
-  overflow-x: hidden;  
+  overflow-x: hidden; 
+  position: relative; 
 
   .date-header{
     margin: 2vh 20vw 2vh 20vw;
@@ -32,6 +34,7 @@
     text-align: center;
     background-color:#7f7f7f96;
     padding: 3px 0 5px 0;
+    cursor: default;
   }
 
   .message {
@@ -46,7 +49,16 @@
         gap: 5px;
         width: 70vw;
         margin-bottom: 20px;
+        align-items: end;
+        position: relative;
 
+        img {
+          display: block;
+          width: 50vmin;
+          height: 50vmin;
+          border-radius: 10px;
+          object-fit: cover;
+        }
         p {
           padding: 20px;
           background-color: #5183fe;
@@ -57,14 +69,6 @@
           overflow-wrap: break-word;
           position: relative; 
 
-          img {
-            width: 100%;
-            height: 300px;
-            border-radius: 10px;
-            object-fit: cover;
-            right: 0;
-            background-color: red;
-          }
 
           &:after {
             content: "";
@@ -86,6 +90,7 @@
         span {
           font-size: 10px;
           align-self: flex-end;
+          cursor: default;
         }
       }
     }
@@ -97,6 +102,13 @@
         flex-direction: column;
         gap: 5px;
         margin-bottom: 20px;
+
+        img {
+          width: 50vmin;
+          height: 50vmin;
+          border-radius: 10px;
+          object-fit: cover;
+        }
 
         p {
           padding: 20px;
@@ -133,6 +145,7 @@
 
       span {
         font-size: 10px;
+        cursor: default;
       }
     }
   }
@@ -185,10 +198,16 @@
 .micclip {
   display: flex;
   gap: 3px;
+  /* background-color: red; */
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 0;
 
   .micclip-icn{
     padding: 15px 20px 15px 20px;
     font-size: 20px;
+    border-radius: 15px;
+
     &:hover{
       background-color: rgb(68, 68, 68);
     }
@@ -219,6 +238,7 @@
 
   padding: 15px 20px 15px 20px;
   font-size: 20px;
+  cursor: pointer;
 
   &:hover{
     background-color: rgb(68, 68, 68);
@@ -233,18 +253,22 @@
   background-color: rgb(21, 21, 21);
   border-radius: 15px;
   padding: 10px;
-  opacity: 0;
-  display: flex;
+  /* opacity: 0; */
+  /* display: flex; */
   justify-content: center;
   flex-direction: column;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-
+  cursor: default;
+  /* z-index: -1; */
+  display: none;
 }
 
 .attachFiles{
-  opacity: 1;
+  display: flex;
+  /* opacity: 1; */
   transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .attach-Icn{
@@ -259,13 +283,119 @@
 
   &:hover{
     background-color: rgb(68, 68, 68);
+    /* cursor: pointer; */
   }
 }
+
+.webcam{
+  position: absolute;
+  top: 9vh;
+  
+}
+
+
+
+
+.spinner1 {
+  position: absolute;
+  top: calc(50% - 4.5vmin);
+  left: calc(50% - 4.5vmin);
+  transform: translate(-50%, -50%);
+  width: 7vmin;
+  height: 7vmin;
+  border-radius: 50%;
+  border: 9px solid #3780ef;
+  animation: spinner-bulqg1 0.8s infinite linear alternate,
+       spinner-oaa3wk 1.6s infinite linear;
+ 
+}
+
+@keyframes spinner-bulqg1 {
+  0% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+
+  12.5% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+
+  25% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  50% {
+     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  62.5% {
+     clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  75% {
+     clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+  }
+
+  100% {
+     clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+  }
+}
+
+@keyframes spinner-oaa3wk {
+  0% {
+     transform: scaleY(1) rotate(0deg);
+  }
+
+  49.99% {
+     transform: scaleY(1) rotate(135deg);
+  }
+
+  50% {
+     transform: scaleY(-1) rotate(0deg);
+  }
+
+  100% {
+     transform: scaleY(-1) rotate(-135deg);
+  }
+}
+
+
+.preview{
+  position: fixed;
+  background-color:rgba(0, 0, 0, 0.682);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.preview img{
+  height: 70%;
+  width: auto;
+}
+
+.preview button{
+  height: 5vmin;
+  width: 17vmin;
+  border-radius: 10px;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: larger;
+  background-color: #5183fe;
+}
+
+
 
 @media (width < 481px) {
   .msg {
     width: 100vw;
-    background-image: url(../../Items/yourname.jpg);
+    /* background-image: url(../../Items/yourname.jpg); */
     background-repeat: no-repeat; 
     background-position: top 8vh center;
   }
@@ -290,6 +420,14 @@
     .micclip-icn{
       padding: 15px 10px 15px 10px;
     }
+  }
+  .webcam{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    
   }
   .personalchat{
     width: 93vw;

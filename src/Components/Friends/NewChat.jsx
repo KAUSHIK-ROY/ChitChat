@@ -39,7 +39,7 @@ export default function NewChat() {
 
       if (!querySnapShot.empty) {
         const searchedUser = querySnapShot.docs[0].data();
-        if (searchedUser.userName === currentUser.userName) {
+        if (searchedUser.id === currentUser.id) {
           setUser(null);
         } else {
           setAddButton(true);

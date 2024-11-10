@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./message.css";
 import upload from "../../Items/upload.js";
 import ChatNav from "./ChatNav.jsx";
@@ -27,6 +27,9 @@ import {
   faImage,
 } from "@fortawesome/free-regular-svg-icons";
 import EmojiPicker from "emoji-picker-react";
+import Webcam from "react-webcam";
+import Loading from "../../Items/Loading.jsx";
+
 
 export default function Messages({ aboutChat, toggleAbout }) {
   const [text, setText] = useState("");
@@ -36,10 +39,29 @@ export default function Messages({ aboutChat, toggleAbout }) {
   const [chat, setChat] = useState();
   const [open, setOpen] = useState(false);
   const [openAttach, setOpenAttach] = useState(false);
+  const [openCam, setOpenCam] = useState(false);
   const [img, setImg] = useState({
     file: null,
     url: "",
   });
+
+  const toggleCam = () => {
+    setOpenCam(!openCam);
+  }
+
+  const webcamRef = useRef(null);
+  const [images, setImages] = useState(null);
+
+  const videoConstraints = {
+    width: 500,    //1280,
+    height: 500,       // 720,
+    facingMode: "user"
+  };
+
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImages(imageSrc);
+  }, [webcamRef]);
 
   const openAttachFiles = () => {
     setOpenAttach(!openAttach);
@@ -76,20 +98,25 @@ export default function Messages({ aboutChat, toggleAbout }) {
     // setOpen(false);
   };
 
+  const [msgLoad, setMsgLoad] = useState(false);
   const handleSendMessage = async () => {
-    if (text === "") return;
+    // if (text === "") return;
+    if (!text && !img.file) return;
+    
     let imgUrl = null;
 
     try {
       if (img.file) {
+        setMsgLoad(true); 
         imgUrl = await upload(img.file);
       }
 
       await updateDoc(doc(db, "chats", chatId), {
         messages: arrayUnion({
           senderId: currentUser.id,
-          text,
+          // text,
           createdAt: new Date(),
+          ...(text && { text }),
           ...(imgUrl && { img: imgUrl }),
         }),
       });
@@ -125,9 +152,11 @@ export default function Messages({ aboutChat, toggleAbout }) {
         url: "",
       });
       setText("");
+      setMsgLoad(false); 
     }
   };
 
+  
   let emojiRef = useRef();
   useEffect(() => {
     let handler = (e) => {
@@ -141,19 +170,19 @@ export default function Messages({ aboutChat, toggleAbout }) {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
-
+  
   const textareaRef = useRef(null);
-
+  
   useEffect(() => {
     const textarea = textareaRef.current;
     textarea.style.height = "auto";
     textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
   }, [text]);
-
+  
   const formatTime = (date) => {
     return format(date, "hh:mm a");
   };
-
+  
   const formatDateHeader = (date) => {
     if (isToday(date)) {
       return "Today";
@@ -177,15 +206,20 @@ export default function Messages({ aboutChat, toggleAbout }) {
     });
     return groups;
   };
-
+  
   const handleImg = (e) => {
     if (e.target.files[0]) {
       setImg({
         file: e.target.files[0],
         url: URL.createObjectURL(e.target.files[0]),
       });
+      handleSendMessage();
     }
   };
+
+
+
+
   return (
     <div>
       <div className="msg">
@@ -202,15 +236,15 @@ export default function Messages({ aboutChat, toggleAbout }) {
                     // <div className="message">
                     <div
                       className={`message ${
-                        message.senderId === currentUser?.id
+                        message?.senderId === currentUser?.id
                           ? "own"
                           : "frnd"
                       }`}
                       key={message?.createAt}
                     >
                       <div className="text">
-                        {message.img && <img src={message.img} alt="" />}
-                        <p>{message.text}</p>
+                        {message.img && <img src={message.img} alt="" /> ||
+                        message.text && <p>{message.text}</p> }
                         <span>{formatTime(message.createdAt.toDate())}</span>
                       </div>
                     </div>
@@ -219,16 +253,35 @@ export default function Messages({ aboutChat, toggleAbout }) {
               )
             )}
           {img.url && (
-            <div className="message own">
-              <div className="text">
+            <div className="preview">
                 <img src={img.url} alt="" />
-                {/* <span>{formatTime(message.createdAt.toDate())}</span> */}
-              </div>
+                {msgLoad && <div class="spinner1"></div> }
+                <button type="submit" onClick={handleSendMessage}>
+              Send <FontAwesomeIcon icon={faPaperPlane} />
+            </button>
             </div>
           )}
 
           <div ref={endRef}></div>
         </div>
+
+        {openCam ? 
+        <div className="webcam"><Webcam
+        audio={false}
+        height={500}                                  //720
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={500}                                 //1280
+        videoConstraints={videoConstraints}
+      />
+      <button onClick={capture} className="capture-Btn">Capture photo</button>
+      {images && (
+        <div>
+          <img src={images} alt="Captured" />
+        </div>
+      )}</div>
+        : ' '
+        }
 
         <div className="tdetails">
           <div className="tinp" ref={emojiRef}>
@@ -273,8 +326,8 @@ export default function Messages({ aboutChat, toggleAbout }) {
                   onChange={handleImg}
                   accept="image/*,video/*"
                 />
-                <div className="attach-Icn" htmlFor="">
-                  <FontAwesomeIcon icon={faCamera} className="icn-div" />
+                <div className="attach-Icn" htmlFor="" onClick={toggleCam}>
+                  <FontAwesomeIcon icon={faCamera} className="icn-div"/>
                   <h5>Camera</h5>
                 </div>
                 <div className="attach-Icn" htmlFor="">

@@ -24,15 +24,6 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
 
-  // firebase google login
-
-  const googleLogin = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then(async (result) => {
-      console.log(result);
-    });
-  };
-
 
 // simple login
 
@@ -57,6 +48,14 @@ export default function Login() {
     setLoading(true);
     const formData = new FormData(e.target);
     const { userName, email, password } = Object.fromEntries(formData);
+    
+    // Check if user is authenticated
+    if (!auth.currentUser) {
+      toast.error("User not authenticated");
+      setLoading(false);
+      return;
+    }
+
     // VALIDATE UNIQUE USERNAME
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("userName", "==", userName));
@@ -72,6 +71,7 @@ export default function Login() {
         email,
         password,
         id: res.user.uid,
+        method: "Email",
         blocked: [],
         // online:[],
       });
@@ -86,6 +86,39 @@ export default function Login() {
       setLoading(false);
     }
   };
+
+  
+  // firebase google login
+
+  const googleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then(async (result) => {
+      const user = result.user;
+      const userData = {
+        email: user.email,
+        userName: user.displayName,
+        avatar: user.photoURL,
+        id: user.uid,
+        method: "Google"
+      };
+      
+      // Check if user is authenticated
+      if (!auth.currentUser) {
+        toast.error("User not authenticated");
+        return;
+      }
+
+      const userRef = doc(db, "users", user.uid);
+      await setDoc(userRef, userData, { merge: true }); // Merge prevents overwriting existing data
+
+      toast.success("Logged in with Google successfully!");
+    })
+    .catch((error) => {
+      console.error("Error signing in with Google:", error);
+      toast.error(error.message);
+    });
+  };
+
 
   return (
     <div className="lcontainer" >
