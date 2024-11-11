@@ -1,5 +1,5 @@
 .friends {
-  height: 100vh;
+  height: 100dvh;
 }
 button {
   cursor: pointer;
@@ -62,7 +62,7 @@ button {
   border-right: 1px solid rgb(90, 90, 90);
   bottom: 0;
   position: fixed;
-  height: 100vh;
+  height: 100dvh;
   background-color: rgb(48, 48, 48);
   z-index: 200;
   text-align: left;

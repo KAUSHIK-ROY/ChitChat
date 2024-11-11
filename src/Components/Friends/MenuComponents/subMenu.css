@@ -40,7 +40,7 @@ h3{
   .subMenu{
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     /* background-color: pink; */
     z-index: 2;
     border: none;
