@@ -2,20 +2,18 @@ import "./login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../../Items/Firebase";
 import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 // import Loading from "../../Items/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+
 
 export default function Login() {
   const [form, setForm] = useState(false);
@@ -26,7 +24,17 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
 
-  // simple login
+  // firebase google login
+
+  const googleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then(async (result) => {
+      console.log(result);
+    });
+  };
+
+
+// simple login
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,21 +57,14 @@ export default function Login() {
     setLoading(true);
     const formData = new FormData(e.target);
     const { userName, email, password } = Object.fromEntries(formData);
-
-    // Check if user is authenticated
-    if (!auth.currentUser) {
-      toast.error("User not authenticated");
-      setLoading(false);
-      return;
-    }
-
+    
     // VALIDATE UNIQUE USERNAME
     const usersRef = collection(db, "users");
     const q = query(usersRef, where("userName", "==", userName));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
       return toast.warn("Select another userName");
-    } 
+    }
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -72,7 +73,6 @@ export default function Login() {
         email,
         password,
         id: res.user.uid,
-        method: "Email",
         blocked: [],
         // online:[],
       });
@@ -88,51 +88,14 @@ export default function Login() {
     }
   };
 
-  // firebase google login
-
-  const googleLogin = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then(async (result) => {
-        const user = result.user;
-        const userData = {
-          email: user.email,
-          userName: user.displayName,
-          avatar: user.photoURL,
-          id: user.uid,
-          method: "Google",
-          blocked: [],
-        };
-
-        // Check if user is authenticated
-        if (!auth.currentUser) {
-          toast.error("User not authenticated");
-          return;
-        }
-
-        const userRef = doc(db, "users", user.uid);
-        await setDoc(userRef, userData, { merge: true });
-
-        await setDoc(doc(db, "userChats", user.uid), {
-          chats: [],
-        });
-
-        toast.success("Logged in with Google successfully!");
-      })
-      .catch((error) => {
-        console.error("Error signing in with Google:", error);
-        toast.error(error.message);
-      });
-  };
-
   return (
-    <div className="lcontainer">
+    <div className="lcontainer" >
       <ToastContainer theme="dark" />
-      <div className="logContainer">
+      <div className="logContainer" >
         {form ? (
           <>
             <div className="curved-shape2"></div>
-            <div className="form-box register">
+            <div className="form-box register" >
               <h2>Register</h2>
               <form onSubmit={handleRegister} autoComplete="off">
                 <div className="input-box">
@@ -244,3 +207,10 @@ export default function Login() {
     </div>
   );
 }
+----------------------------------------------------------
+
+
+
+
+
+

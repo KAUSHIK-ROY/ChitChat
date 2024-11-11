@@ -80,7 +80,7 @@ export default function AllChats({input}) {
       {filteredChats.map((chat) =>(                     
       <div className={`allUsers ${chat?.isSeen ? '' : 'unseen'}`} key={chat.chatId} onClick={()=>handleSelect(chat)} 
         >
-        <img src={ chat.user.blocked.includes(currentUser.id)
+        <img src={ chat.user.blocked && chat.user.blocked.includes(currentUser.id)
                 ? dp
                 : chat.user.avatar || dp} alt='DP' />
         <div className="shortdetail">

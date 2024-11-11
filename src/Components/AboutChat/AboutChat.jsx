@@ -7,11 +7,11 @@ import { useChatStore } from "../../Items/chatStore";
 
 import { db } from "../../Items/Firebase";
 import { useUserStore } from "../../Items/userStore";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { arrayRemove, arrayUnion, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 
 
 export default function AboutChat({ toggleAbout }) {
-  const {chatId, user} = useChatStore();
+  const {chatId, user, changeBlock, isReceiverBlocked} = useChatStore();
 
 
 
@@ -28,6 +28,21 @@ export default function AboutChat({ toggleAbout }) {
     };
   }, [chatId]);
 
+
+  const blockUser = async()=>{
+    if (!user) return;
+
+    const userDocRef = doc(db, "users", currentUser.id);
+
+    try {
+      await updateDoc(userDocRef, {
+        blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id),
+      });
+      changeBlock();
+    } catch (err) {
+      console.log(err);
+    }
+  }
   // if (chats.messages.img === null){
   //   return null;
   // }
@@ -62,7 +77,7 @@ export default function AboutChat({ toggleAbout }) {
               )}
             </div>
         </div>
-        <button className="block-btn">Block User</button>
+        <button className="block-btn" onClick={blockUser}>Block User</button>
       </div>
   );
 }

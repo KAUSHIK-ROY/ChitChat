@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import MyProfile from "./Components/Friends/MyProfile.jsx";
 import Login from "./Components/LogIn/Login.jsx";
-import Messages from "./Components/MyChat/Messages.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Items/Firebase.js";
 import { useUserStore } from "./Items/userStore.js";
@@ -10,6 +9,7 @@ import Loading from "./Items/Loading.jsx";
 import AboutChat from "./Components/AboutChat/AboutChat.jsx";
 import { useChatStore } from "./Items/chatStore.js";
 import Robot from "./Items/robot.gif";
+import Messages from "./Components/MyChat/Messages.jsx";
 
 function App() {
   const [aboutChat, setAboutChat] = useState(false);
