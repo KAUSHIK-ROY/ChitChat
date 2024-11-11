@@ -49,13 +49,14 @@ export default function Login() {
     setLoading(true);
     const formData = new FormData(e.target);
     const { userName, email, password } = Object.fromEntries(formData);
-
+    
+    console.log("usr",auth.currentUser)
     // Check if user is authenticated
-    if (!auth.currentUser) {
-      toast.error("User not authenticated");
-      setLoading(false);
-      return;
-    }
+    // if (!auth.currentUser) {
+    //   toast.error("User not authenticated");
+    //   setLoading(false);
+    //   return;
+    // }
 
     // VALIDATE UNIQUE USERNAME
     const usersRef = collection(db, "users");
@@ -80,7 +81,10 @@ export default function Login() {
       await setDoc(doc(db, "userChats", res.user.uid), {
         chats: [],
       });
-      toast.success("Successfully create an account!");
+      toast.success("Successfully created an account!");
+
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Successfully logged in after registration!");
     } catch (err) {
       toast.error(err.message);
     } finally {
@@ -90,7 +94,7 @@ export default function Login() {
 
   // firebase google login
 
-  const googleLogin = () => {
+  const googleLogin = async () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(async (result) => {
@@ -111,6 +115,13 @@ export default function Login() {
         }
 
         const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDocs(userRef);
+
+        if (userDoc.exists()) {
+          toast.success("Logged in with Google successfully!");
+          return;
+        }
+
         await setDoc(userRef, userData, { merge: true });
 
         await setDoc(doc(db, "userChats", user.uid), {

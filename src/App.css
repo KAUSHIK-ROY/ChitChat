@@ -12,14 +12,14 @@ body {
   display: flex;
   color: white;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   position: relative;
   overflow: hidden;
 }
 
 .friends {
-  height: 100vh;
+  height: 100dvh;
   width: 25vw;
   overflow: hidden;
   position: absolute;
@@ -27,7 +27,7 @@ body {
 
 
 .myChat {
-  height: 100vh;
+  height: 100dvh;
   width: 75vw;
   background-color: aliceblue;
   display: flex;
@@ -42,7 +42,7 @@ body {
 }
 
 .Reload {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   align-items: center;
