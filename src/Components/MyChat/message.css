@@ -54,8 +54,10 @@
 
         img {
           display: block;
-          width: 60vmin;
-          height: auto;
+          max-width: 30vmax;
+          max-height: 100%;
+          /* width: auto; 
+          height: auto;  */
           border-radius: 10px;
           object-fit: cover;
         }
@@ -104,8 +106,9 @@
         margin-bottom: 20px;
 
         img {
-          width: 60vmin;
-          height: auto;
+          display: block;
+          max-width: 30vmax;
+          max-height: 100%;
           border-radius: 10px;
           object-fit: cover;
         }
@@ -429,6 +432,7 @@
     width: 100vw;
     
   }
+
   .personalchat{
     width: 93vw;
     padding: 20px 4vw;
@@ -465,5 +469,13 @@
         }
       }
     }
+  }
+  .preview img{
+    width: 75vw;
+    height: auto;
+  }
+  .preview button{
+    width: 25vw;
+    height: 5vh;
   }
 }
