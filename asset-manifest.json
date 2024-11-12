@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ChitChat/static/css/main.e475e609.css",
+    "main.css": "/ChitChat/static/css/main.456b48b9.css",
     "main.js": "/ChitChat/static/js/main.c2fb2c95.js",
     "static/js/453.c07c44db.chunk.js": "/ChitChat/static/js/453.c07c44db.chunk.js",
     "static/media/robot.gif": "/ChitChat/static/media/robot.0617a41936621e9697cd.gif",
     "static/media/google-logo-9824.png": "/ChitChat/static/media/google-logo-9824.b31361249fb7518952ee.png",
     "index.html": "/ChitChat/index.html",
-    "main.e475e609.css.map": "/ChitChat/static/css/main.e475e609.css.map",
+    "main.456b48b9.css.map": "/ChitChat/static/css/main.456b48b9.css.map",
     "main.c2fb2c95.js.map": "/ChitChat/static/js/main.c2fb2c95.js.map",
     "453.c07c44db.chunk.js.map": "/ChitChat/static/js/453.c07c44db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e475e609.css",
+    "static/css/main.456b48b9.css",
     "static/js/main.c2fb2c95.js"
   ]
 }
